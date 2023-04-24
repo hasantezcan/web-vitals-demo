@@ -1,0 +1,10 @@
+{
+  "hash": true,
+  "publicPath": true,
+  "assets": true,
+  "chunks": false,
+  "modules": false,
+  "source": false,
+  "errorDetails": false,
+  "timings": false
+}
