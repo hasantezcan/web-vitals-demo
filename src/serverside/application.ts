@@ -9,10 +9,8 @@ import React from "react";
 import App from "../clientside/App";
 
 
-async function buildReact(content: string) {
-  const DOM_FLAG = "<!--dom-->";
-
-  await build({
+function buildClientSide() {
+  return build({
     root: path.resolve(process.cwd(), "./src/clientside"),
     base: "/public",
     build: {
@@ -21,10 +19,18 @@ async function buildReact(content: string) {
     },
     plugins: [viteReactPlugin()],
   });
+}
+
+async function buildReact(content: string) {
+  const DOM_FLAG = "<!--dom-->";
+
+  if (!fs.existsSync(path.resolve(process.cwd(), "./public"))) {
+    await buildClientSide();
+  }
 
   const htmlFilePath = path.resolve(process.cwd(), "./public/index.html");
 
-  const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
+  const htmlFileBuffer = fs.readFileSync(htmlFilePath, {encoding: "utf-8"});
 
   const htmlFile = htmlFileBuffer.toString()
 
@@ -37,15 +43,19 @@ async function buildReact(content: string) {
       logger: true,
     });
 
-    fastify.register(FastifyStatic, {
+    fs.watch(path.resolve(process.cwd(), "./src/clientside"), { }, async (eventType, filename) => {
+      await buildClientSide();
+    })
+
+
+      fastify.register(FastifyStatic, {
       root: path.resolve(process.cwd(), "./public"),
       prefix: "/public/"
     });
 
     fastify.get("/", async (_request, reply) => {
-      
-      const reactComponent = renderToString(React.createElement(App, {}));
 
+      const reactComponent = renderToString(React.createElement(App, {}));
 
       const html = await buildReact(reactComponent);
 
@@ -54,11 +64,16 @@ async function buildReact(content: string) {
 
     fastify.get("/clientside", async (_request, reply) => {
       const html = await buildReact("");
-      
+
       reply.code(200).header("Content-Type", "text/html").send(Buffer.from(html, "utf-8"));
     });
 
-    await fastify.listen({ port: 3000 });
+    fastify.ready(async (err) => {
+      if (err) throw err
+      await buildClientSide()
+    })
+
+    await fastify.listen({port: 3000});
   } catch (error) {
     process.exit(0);
   }
