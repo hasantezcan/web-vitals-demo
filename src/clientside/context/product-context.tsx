@@ -1,19 +1,5 @@
 import React, { Context, createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
-
-export interface Product {
-    id: number
-    title: string
-    price: number
-    description: string
-    category: Category
-    images: string[]
-}
-
-export interface Category {
-    id: number
-    name: string
-    image: string
-}
+import { Product } from '../interfaces/product';
 
 interface IProductContext {
     productList: any[];
