@@ -64,7 +64,6 @@ async function buildReact(content: string) {
 
     fastify.get("/", async (_request, reply) => {
       // fetch data
-
       const initalData = { user: { name: "World" } };
       const decodedProps = serialize(initalData, { isJSON: true });
       const script = `<script>window["initalData"]=${decodedProps}</script>`;

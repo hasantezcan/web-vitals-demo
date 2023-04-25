@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { asyncForEach } from "../../../utils/common";
-import "./Header.scss";
+// import "./Header.scss";
 
 const Header = () => {
   const fetchPeople = async () => {

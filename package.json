@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/serverside/application.ts",
-    "build": "vite build"
+    "build": "tsc --project tsconfig.clientside.json && vite build"
   },
   "dependencies": {
     "@fastify/static": "^6.10.1",
