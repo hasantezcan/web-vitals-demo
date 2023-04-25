@@ -5,7 +5,7 @@ import "./index.scss";
 
 const Element = (
   <React.StrictMode>
-    <App {...(window as any).initalData} />
+    <App {...(window as any).initialData} />
   </React.StrictMode>
 );
 

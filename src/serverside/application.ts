@@ -64,12 +64,12 @@ async function buildReact(content: string) {
 
     fastify.get("/", async (_request, reply) => {
       // fetch data
-      const initalData = { user: { name: "World" } };
-      const decodedProps = serialize(initalData, { isJSON: true });
-      const script = `<script>window["initalData"]=${decodedProps}</script>`;
+      const initialData = { user: { name: "World" } };
+      const decodedProps = serialize(initialData, { isJSON: true });
+      const script = `<script>window["initialData"]=${decodedProps}</script>`;
 
       // https://gitlab.trendyol.com/discovery/mobile-web/packages/gateway-renderer/-/blob/master/src/index.ts#L12
-      const reactComponent = renderToString(React.createElement(App, initalData, null));
+      const reactComponent = renderToString(React.createElement(App, initialData, null));
       const html = await buildReact(`${script} ${reactComponent}`);
 
       reply.code(200).header("Content-Type", "text/html").send(Buffer.from(html, "utf-8"));
