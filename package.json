@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "repository": "git@github.com:hasantezcan/worst-site-ever.git",
-  "author": "Sfint-Crowdin Bot <gitlab-bot@trendyol.com>",
+  "author": "Hasan Tezcan <hasan.tezcan@trendyol.com>",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon ./src/serverside/application.ts",

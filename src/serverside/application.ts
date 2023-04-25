@@ -2,12 +2,11 @@ import path from "node:path";
 import fs from "node:fs";
 import Fastify from "fastify";
 import FastifyStatic from "@fastify/static";
-import {build} from "vite";
+import { build } from "vite";
 import viteReactPlugin from "@vitejs/plugin-react";
-import {renderToString} from 'react-dom/server';
+import { renderToString } from "react-dom/server";
 import React from "react";
 import App from "../clientside/App";
-
 
 function buildClientSide() {
   return build({
@@ -30,9 +29,9 @@ async function buildReact(content: string) {
 
   const htmlFilePath = path.resolve(process.cwd(), "./public/index.html");
 
-  const htmlFileBuffer = fs.readFileSync(htmlFilePath, {encoding: "utf-8"});
+  const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
 
-  const htmlFile = htmlFileBuffer.toString()
+  const htmlFile = htmlFileBuffer.toString();
 
   return htmlFile.replace(DOM_FLAG, content);
 }
@@ -43,24 +42,32 @@ async function buildReact(content: string) {
       logger: true,
     });
 
-    fs.watch(path.resolve(process.cwd(), "./src/clientside"), { }, async (eventType, filename) => {
+    fs.watch(path.resolve(process.cwd(), "./src/clientside"), {}, async (eventType, filename) => {
       await buildClientSide();
-    })
-
-
-      fastify.register(FastifyStatic, {
-      root: path.resolve(process.cwd(), "./public"),
-      prefix: "/public/"
     });
 
-    fastify.get("/", async (_request, reply) => {
+    fastify.register(FastifyStatic, {
+      root: path.resolve(process.cwd(), "./public"),
+      prefix: "/public/",
+    });
 
+    // block response time for 5 sec
+
+    // fastify.addHook("onRequest", async (_request, reply) => {
+    //   await new Promise((resolve) => {
+    //     setTimeout(() => {
+    //       resolve(true);
+    //     }, 5000);
+    //   });
+    // });
+
+    fastify.get("/", async (_request, reply) => {
       const reactComponent = renderToString(React.createElement(App, {}));
 
       const html = await buildReact(reactComponent);
 
       reply.code(200).header("Content-Type", "text/html").send(Buffer.from(html, "utf-8"));
-    })
+    });
 
     fastify.get("/clientside", async (_request, reply) => {
       const html = await buildReact("");
@@ -69,11 +76,11 @@ async function buildReact(content: string) {
     });
 
     fastify.ready(async (err) => {
-      if (err) throw err
-      await buildClientSide()
-    })
+      if (err) throw err;
+      await buildClientSide();
+    });
 
-    await fastify.listen({port: 3000});
+    await fastify.listen({ port: 3000 });
   } catch (error) {
     process.exit(0);
   }
