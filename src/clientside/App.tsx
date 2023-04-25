@@ -6,6 +6,7 @@ import { ProductProvider } from "./context/product-context";
 import { Product } from "./interfaces/product";
 
 export default function App(props: { products?: Product[] }) {
+  console.log("🚀 ============================ > props:", props);
   return (
     <ProductProvider products={props.products}>
       <MarketingBanner />

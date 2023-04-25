@@ -67,9 +67,10 @@ async function buildReact(content: string) {
 
     fastify.get("/", async (_request, reply) => {
       const products = await axios.get<Product[]>("http://localhost:3000/api/products");
+      const suggestions = await axios.get<any[]>("http://localhost:3000/api/search-suggestion");
 
       // fetch data
-      const initialData = { products: products.data };
+      const initialData = { products: products.data, suggestions: suggestions.data };
       const decodedProps = serialize(initialData, { isJSON: true });
       const script = `<script>window["initialData"]=${decodedProps}</script>`;
 
