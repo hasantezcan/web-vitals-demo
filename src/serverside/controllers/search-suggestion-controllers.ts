@@ -1,6 +1,9 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export async function getSearchSuggestion(request: FastifyRequest, reply: FastifyReply) {
+export async function getSearchSuggestion(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
   const response = [
     {
       url: "/sr?wb=38&os=1&sk=1",

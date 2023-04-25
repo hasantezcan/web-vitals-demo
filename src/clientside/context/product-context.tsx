@@ -1,8 +1,16 @@
-import React, { Context, createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
+import {
+  Context,
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Product } from "../interfaces/product";
+import { API_URL } from "../../constants";
 
 interface IProductContext {
-  productList: any[];
+  productList: Product[];
 }
 
 const defaultProductContext: IProductContext = {
@@ -10,20 +18,30 @@ const defaultProductContext: IProductContext = {
 };
 
 interface ProductContextProps {
-  products?: Product[];
+  initialProducts?: Product[];
 }
 
-const ProductContext: Context<IProductContext> = createContext(defaultProductContext);
+const ProductContext: Context<IProductContext> = createContext(
+  defaultProductContext
+);
 
 const useProduct = () => useContext(ProductContext);
 
-const ProductProvider = ({ children, products }: PropsWithChildren<ProductContextProps>) => {
-  const setInitialProductList = () => (products && Array.isArray(products) && products.length ? products : []);
+const ProductProvider = ({
+  children,
+  initialProducts,
+}: PropsWithChildren<ProductContextProps>) => {
+  const setInitialProductList = () =>
+    initialProducts && Array.isArray(initialProducts) && initialProducts.length
+      ? initialProducts
+      : [];
 
-  const [productList, setProductList] = useState<Product[]>(setInitialProductList());
+  const [productList, setProductList] = useState<Product[]>(
+    setInitialProductList()
+  );
 
   const getProductData = async () => {
-    const response = await fetch("http://localhost:3000/api/products");
+    const response = await fetch(`${API_URL}/products`);
     const productData = await response.json();
     if (productData && Array.isArray(productData) && productData.length) {
       setProductList(productData);

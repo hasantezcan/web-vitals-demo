@@ -1,10 +1,13 @@
-import React from "react";
 import ProductRecommendations from "./ProductRecommendations";
 import { useProduct } from "../../context/product-context";
 
 const Pdp = () => {
   const { productList } = useProduct();
-  console.log("🚀 ============================ > productList:", productList);
+
+  const product = productList[0];
+
+  if (!product) return null;
+
   return (
     <div className="pdp-wrapper">
       <div className="pdp">
@@ -19,17 +22,12 @@ const Pdp = () => {
             alt=""
           />
           <div className="pdp-detail">
-            <h1 className="title">Nike Runner</h1>
+            <h1 className="title">{product.title}</h1>
             <p className="price">
-              <span className="price-value">₺ 49,99</span>
+              <span className="price-value">₺ {product.price}</span>
               <span className="price-without-discount">₺ 89,99</span>
             </p>
-            <p className="description">
-              Description Gray sneaker, structured Flat heel Small heel height, between 1-4 cm Upper: 100%
-              Synthetic;Inner Material: 100% Textile;Outsole: 100% Rubber Care Instructions See care label for detailed
-              care instructions. Additional Info Dispatched and sold by Shoes24. From this product can A maximum of 10
-              pieces can be ordered. Trendyol reserves the right to cancel orders over 10 pieces cancel.
-            </p>
+            <p className="description">{product.description}</p>
 
             <div className="add-to-cart-button">ADD TO CART</div>
           </div>

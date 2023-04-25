@@ -9,4 +9,7 @@ const Element = (
   </React.StrictMode>
 );
 
-ReactDOM.hydrateRoot(document.getElementById("root") as HTMLElement, Element).render(Element);
+ReactDOM.hydrateRoot(
+  document.getElementById("root") as HTMLElement,
+  Element
+).render(Element);
