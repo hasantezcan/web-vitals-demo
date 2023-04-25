@@ -1,6 +1,7 @@
+import React from 'react'
 import ProductRecommendations from "./ProductRecommendations";
 
-const Pdp = () => {
+const Pdp = () => {  
   return (
     <div className="pdp-wrapper">
       <div className="pdp">
