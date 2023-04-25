@@ -7,6 +7,7 @@ import viteReactPlugin from "@vitejs/plugin-react";
 import { renderToString } from "react-dom/server";
 import React from "react";
 import App from "../clientside/App";
+import serialize from "serialize-javascript";
 
 function buildClientSide() {
   return build({
@@ -62,9 +63,15 @@ async function buildReact(content: string) {
     // });
 
     fastify.get("/", async (_request, reply) => {
-      const reactComponent = renderToString(React.createElement(App, {}));
+      // fetch data
 
-      const html = await buildReact(reactComponent);
+      const initalData = { user: { name: "World" } };
+      const decodedProps = serialize(initalData, { isJSON: true });
+      const script = `<script>window["initalData"]=${decodedProps}</script>`;
+
+      // https://gitlab.trendyol.com/discovery/mobile-web/packages/gateway-renderer/-/blob/master/src/index.ts#L12
+      const reactComponent = renderToString(React.createElement(App, initalData, null));
+      const html = await buildReact(`${script} ${reactComponent}`);
 
       reply.code(200).header("Content-Type", "text/html").send(Buffer.from(html, "utf-8"));
     });

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { asyncForEach } from "../../../utils/common";
-// import "./Header.css";
+import "./Header.scss";
 
 const Header = () => {
   const fetchPeople = async () => {
@@ -14,9 +14,9 @@ const Header = () => {
   useEffect(() => {
     const arr = new Array(10).fill(0);
 
-    asyncForEach(arr, async (num: any) => {
-      await fetchPeople();
-    });
+    // asyncForEach(arr, async (num: any) => {
+    //   await fetchPeople();
+    // });
   }, []);
 
   const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
