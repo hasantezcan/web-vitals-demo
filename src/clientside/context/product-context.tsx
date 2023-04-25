@@ -1,17 +1,16 @@
-import React, { Context, createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
-import { Product } from '../interfaces/product';
+import React, { Context, createContext, PropsWithChildren, useContext, useEffect, useState } from "react";
+import { Product } from "../interfaces/product";
 
 interface IProductContext {
-    productList: any[];
+  productList: any[];
 }
 
 const defaultProductContext: IProductContext = {
-    productList: []
-
+  productList: [],
 };
 
 interface ProductContextProps {
-    products?: Product[];
+  products?: Product[];
 }
 
 const ProductContext: Context<IProductContext> = createContext(defaultProductContext);
@@ -19,34 +18,31 @@ const ProductContext: Context<IProductContext> = createContext(defaultProductCon
 const useProduct = () => useContext(ProductContext);
 
 const ProductProvider = ({ children, products }: PropsWithChildren<ProductContextProps>) => {
+  const setInitialProductList = () => (products && Array.isArray(products) && products.length ? products : []);
 
-    const setInitialProductList = () => products && Array.isArray(products) && products.length ? products : [];
+  const [productList, setProductList] = useState<Product[]>(setInitialProductList());
 
-    const [productList, setProductList] = useState<Product[]>(setInitialProductList());
-
-    const getProductData = async () => {
-        const response = await fetch("https://api.escuelajs.co/api/v1/products");
-        const productData = await response.json();
-        if (productData && Array.isArray(productData) && productData.length) {
-            setProductList(productData);
-        }
-
+  const getProductData = async () => {
+    const response = await fetch("http://localhost:3000/api/products");
+    const productData = await response.json();
+    if (productData && Array.isArray(productData) && productData.length) {
+      setProductList(productData);
     }
+  };
 
-    useEffect(() => {
-        if (!productList?.length)
-            getProductData();
-    }, [])
+  useEffect(() => {
+    if (!productList?.length) getProductData();
+  }, []);
 
-    return (
-        <ProductContext.Provider
-            value={{
-                productList
-            }}
-        >
-            {children}
-        </ProductContext.Provider>
-    );
+  return (
+    <ProductContext.Provider
+      value={{
+        productList,
+      }}
+    >
+      {children}
+    </ProductContext.Provider>
+  );
 };
 
 export { ProductProvider, useProduct };

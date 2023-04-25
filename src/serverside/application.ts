@@ -8,6 +8,9 @@ import { renderToString } from "react-dom/server";
 import React from "react";
 import App from "../clientside/App";
 import serialize from "serialize-javascript";
+import { routes } from "./routes";
+import axios from "axios";
+import { Product } from "../clientside/interfaces/product";
 
 function buildClientSide() {
   return build({
@@ -63,8 +66,10 @@ async function buildReact(content: string) {
     // });
 
     fastify.get("/", async (_request, reply) => {
+      const products = await axios.get<Product[]>("http://localhost:3000/api/products");
+
       // fetch data
-      const initialData = { user: { name: "World" } };
+      const initialData = { products: products.data };
       const decodedProps = serialize(initialData, { isJSON: true });
       const script = `<script>window["initialData"]=${decodedProps}</script>`;
 
@@ -80,6 +85,8 @@ async function buildReact(content: string) {
 
       reply.code(200).header("Content-Type", "text/html").send(Buffer.from(html, "utf-8"));
     });
+
+    fastify.register(routes, { prefix: "/api" });
 
     fastify.ready(async (err) => {
       if (err) throw err;

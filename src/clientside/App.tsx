@@ -1,16 +1,16 @@
-import React from 'react'
+import React from "react";
 import { Header } from "./components/Header/Header";
 import { MarketingBanner } from "./components/MarketingBanner/MarketingBanner";
 import { Pdp } from "./components/Pdp/Pdp";
 import { ProductProvider } from "./context/product-context";
+import { Product } from "./interfaces/product";
 
-export default function App(props: any) {
+export default function App(props: { products?: Product[] }) {
   return (
-    <ProductProvider>
+    <ProductProvider products={props.products}>
       <MarketingBanner />
       <Header />
       <Pdp />
     </ProductProvider>
-
   );
 }

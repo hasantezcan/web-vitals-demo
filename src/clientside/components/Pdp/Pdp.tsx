@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
 import ProductRecommendations from "./ProductRecommendations";
+import { useProduct } from "../../context/product-context";
 
-const Pdp = () => {  
+const Pdp = () => {
+  const { productList } = useProduct();
+  console.log("🚀 ============================ > productList:", productList);
   return (
     <div className="pdp-wrapper">
       <div className="pdp">
