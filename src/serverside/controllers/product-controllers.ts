@@ -45,6 +45,50 @@ export async function getProducts(
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       category: "Shoes",
       images: [
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s",
+      ],
+    },
+    {
+      id: 3,
+      title: "Nike Air Max",
+      price: 100.99,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      category: "Shoes",
+      images: [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+      ],
+    },
+    {
+      id: 4,
+      title: "Nike Air Max",
+      price: 100.99,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      category: "Shoes",
+      images: [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+      ],
+    },
+    {
+      id: 5,
+      title: "Nike Air Max",
+      price: 100.99,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      category: "Shoes",
+      images: [
+        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+      ],
+    },
+    {
+      id: 6,
+      title: "Nike Air Max",
+      price: 100.99,
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      category: "Shoes",
+      images: [
         "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s",
         "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
       ],
