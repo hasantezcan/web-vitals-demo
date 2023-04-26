@@ -8,6 +8,7 @@
   "scripts": {
     "partytown": "partytown copylib ~partytown",
     "dev": "yarn partytown && nodemon ./src/serverside/application.ts ",
+    "start": "nodemon ./src/serverside/application.ts ",
     "build": "yarn partytown && tsc --project tsconfig.clientside.json && vite build"
   },
   "engines": {

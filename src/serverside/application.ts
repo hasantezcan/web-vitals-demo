@@ -85,7 +85,9 @@ async function buildReact(content: string) {
         `${API_URL}/search-suggestion`
       );
       const banners = await axios.get<Banner[]>(`${API_URL}/banners`);
-      const colorOptions = await axios.get<ColorOptions[]>(`${API_URL}/color-options`);
+      const colorOptions = await axios.get<ColorOptions[]>(
+        `${API_URL}/color-options`
+      );
 
       // fetch data
       const initialData = {
@@ -125,7 +127,9 @@ async function buildReact(content: string) {
       await buildClientSide();
     });
 
-    await fastify.listen({ port: 3000 });
+    const PORT = parseInt(process.env.PORT || "3000");
+
+    await fastify.listen({ port: PORT });
   } catch (error) {
     process.exit(0);
   }

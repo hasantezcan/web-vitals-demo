@@ -31,7 +31,11 @@ const Header = () => {
   return (
     <div className="header-wrapper">
       <div className="header">
-        <img className="ty-logo" src="https://cdn.dsmcdn.com/web/logo/ty-web.svg" alt="" />
+        <img
+          className="ty-logo"
+          src="https://cdn.dsmcdn.com/web/logo/ty-web.svg"
+          alt=""
+        />
         <div className="search-bar">
           <input
             type="text"
@@ -40,7 +44,10 @@ const Header = () => {
             onBlur={handleSearchBlur}
           />
           <span>
-            <img className="search-icon" src="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg" />
+            <img
+              className="search-icon"
+              src="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg"
+            />
           </span>
 
           {showSearchSuggestions && (
@@ -56,20 +63,34 @@ const Header = () => {
         </div>
         <div className="navigations">
           <div className="navigation-item login">
-            <img src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg" alt="" />
+            <img
+              src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg"
+              alt=""
+            />
             <span>Account</span>
           </div>
           <div className="navigation-item fav">
-            <img src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg" alt="" />
+            <img
+              src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg"
+              alt=""
+            />
             <span>Favorites</span>
           </div>
           <div className="navigation-item cart">
-            <img src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg" alt="" />
+            <img
+              src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg"
+              alt=""
+            />
             <span>Cart</span>
           </div>
           <div className="navigation-item profile">
-            <img src="https://cdn.dsmcdn.com/sfint/production/icons/balik_1682522305118.png" alt="" />
-            <span>Sefa Balık</span>
+            <a href="https://www.subaymuco.com/" target="_blank">
+              <img
+                src="https://www.subaymuco.com/_next/image?url=%2Fmuco-images%2Fsubay-muco.jpg&w=750&q=75"
+                alt="subay-muco"
+              />
+              <span>Subay Muco</span>
+            </a>
           </div>
         </div>
       </div>
