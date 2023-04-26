@@ -1,5 +1,7 @@
 import ProductRecommendations from "./ProductRecommendations";
 import { useProduct } from "../../context/product-context";
+import { MarketingBanner } from "../MarketingBanner/MarketingBanner";
+import { BANNER_TYPES } from "../../enums";
 
 const Pdp = () => {
   const { productList } = useProduct();
@@ -28,7 +30,9 @@ const Pdp = () => {
               <span className="price-without-discount">₺ 89,99</span>
             </p>
             <p className="description">{product.description}</p>
-
+            <MarketingBanner bannerType={BANNER_TYPES.LISTING_BANNER} />
+            {//TODO: add color options
+            }
             <div className="add-to-cart-button">ADD TO CART</div>
           </div>
         </div>

@@ -1,5 +1,9 @@
 import { FastifyInstance } from "fastify";
-import { getProduct, getProducts } from "./controllers/product-controllers";
+import {
+  getColorOptions,
+  getProduct,
+  getProducts,
+} from "./controllers/product-controllers";
 import { getSearchSuggestion } from "./controllers/search-suggestion-controllers";
 import { getBanners } from "./controllers/banner-controllers";
 
@@ -15,5 +19,8 @@ export async function routes(fastify: FastifyInstance) {
   );
   fastify.get("/banners", async (_request, reply) =>
     getBanners(_request, reply)
+  );
+  fastify.get("/color-options", async (_request, reply) =>
+    getColorOptions(_request, reply)
   );
 }

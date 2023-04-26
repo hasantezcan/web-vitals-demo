@@ -4,7 +4,7 @@ export async function getBanners(request: FastifyRequest, reply: FastifyReply) {
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 10000);
+    }, 2000);
   });
 
   const response = [

@@ -11,14 +11,17 @@ import { API_URL } from "../../constants";
 
 interface IProductContext {
   productList: Product[];
+  colorOptions: any;
 }
 
 const defaultProductContext: IProductContext = {
   productList: [],
+  colorOptions: []
 };
 
 interface ProductContextProps {
   initialProducts?: Product[];
+  initialColorOptions?: any;
 }
 
 const ProductContext: Context<IProductContext> = createContext(
@@ -30,15 +33,20 @@ const useProduct = () => useContext(ProductContext);
 const ProductProvider = ({
   children,
   initialProducts,
+  initialColorOptions
 }: PropsWithChildren<ProductContextProps>) => {
   const setInitialProductList = () =>
     initialProducts && Array.isArray(initialProducts) && initialProducts.length
       ? initialProducts
       : [];
-
+  const setInitialColorOptions = () =>
+    initialColorOptions && Array.isArray(initialColorOptions) && initialColorOptions.length
+      ? initialColorOptions
+      : [];
   const [productList, setProductList] = useState<Product[]>(
     setInitialProductList()
   );
+  const [colorOptions, setColorOptions] = useState(setInitialColorOptions());
 
   const getProductData = async () => {
     const response = await fetch(`${API_URL}/products`);
@@ -48,14 +56,24 @@ const ProductProvider = ({
     }
   };
 
+  const getColorOptionsData = async () => {
+    const response = await fetch(`${API_URL}/color-options`);
+    const colorOptionsData = await response.json();
+    if (colorOptionsData && Array.isArray(colorOptionsData) && colorOptionsData.length) {
+      setColorOptions(colorOptionsData);
+    }
+  };
+
   useEffect(() => {
     if (!productList?.length) getProductData();
+    if (!colorOptions?.length) getColorOptionsData();
   }, []);
 
   return (
     <ProductContext.Provider
       value={{
         productList,
+        colorOptions
       }}
     >
       {children}

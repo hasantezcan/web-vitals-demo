@@ -77,12 +77,14 @@ async function buildReact(content: string) {
         `${API_URL}/search-suggestion`
       );
       const banners = await axios.get<Banner[]>(`${API_URL}/banners`);
+      const colorOptions = await axios.get<any>(`${API_URL}/color-options`);
 
       // fetch data
       const initialData = {
         products: products.data,
         suggestions: suggestions.data,
         banners: banners.data,
+        colorOptions: colorOptions.data,
       };
       const decodedProps = serialize(initialData, { isJSON: true });
       const script = `<script>window["initialData"]=${decodedProps}</script>`;
