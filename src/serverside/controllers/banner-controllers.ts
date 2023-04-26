@@ -1,6 +1,12 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
 export async function getBanners(request: FastifyRequest, reply: FastifyReply) {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 10000);
+  });
+
   const response = [
     {
       imageUrl:
