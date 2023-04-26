@@ -12,3 +12,15 @@ export interface Category {
   name: string;
   image: string;
 }
+
+export interface ColorOptions {
+  color: string;
+  category: string;
+  type?: string;
+  code: Code;
+}
+
+export interface Code {
+  rgba: number[];
+  hex: string;
+}

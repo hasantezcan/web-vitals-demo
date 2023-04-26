@@ -57,7 +57,7 @@ const Header = () => {
         <div className="navigations">
           <div className="navigation-item login">
             <img src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg" alt="" />
-            <span>Login</span>
+            <span>Account</span>
           </div>
           <div className="navigation-item fav">
             <img src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg" alt="" />
@@ -66,6 +66,10 @@ const Header = () => {
           <div className="navigation-item cart">
             <img src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg" alt="" />
             <span>Cart</span>
+          </div>
+          <div className="navigation-item profile">
+            <img src="https://cdn.dsmcdn.com/sfint/production/icons/balik_1682522305118.png" alt="" />
+            <span>Sefa Balık</span>
           </div>
         </div>
       </div>
