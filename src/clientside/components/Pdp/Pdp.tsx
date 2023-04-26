@@ -2,6 +2,7 @@ import ProductRecommendations from "./ProductRecommendations";
 import { useProduct } from "../../context/product-context";
 import { MarketingBanner } from "../MarketingBanner/MarketingBanner";
 import { BANNER_TYPES } from "../../enums";
+import DiscoverMore from "./DiscoverMore";
 
 const Pdp = () => {
   const { productList } = useProduct();
@@ -20,8 +21,8 @@ const Pdp = () => {
         <div className="main">
           <img
             className="pdp-image"
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
-            alt=""
+            src={product.images[0]}
+            alt={product.title}
           />
           <div className="pdp-detail">
             <h1 className="title">{product.title}</h1>
@@ -38,7 +39,7 @@ const Pdp = () => {
         </div>
 
         <ProductRecommendations title="Recommended Products" />
-        <ProductRecommendations title="Similar Products" />
+        <DiscoverMore title="You may also like" />
       </div>
     </div>
   );

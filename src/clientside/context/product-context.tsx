@@ -6,12 +6,12 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Product } from "../interfaces/product";
+import { ColorOptions, Product } from "../interfaces/product";
 import { API_URL } from "../../constants";
 
 interface IProductContext {
   productList: Product[];
-  colorOptions: any;
+  colorOptions: ColorOptions[];
 }
 
 const defaultProductContext: IProductContext = {
@@ -21,7 +21,7 @@ const defaultProductContext: IProductContext = {
 
 interface ProductContextProps {
   initialProducts?: Product[];
-  initialColorOptions?: any;
+  initialColorOptions?: ColorOptions[];
 }
 
 const ProductContext: Context<IProductContext> = createContext(
@@ -46,7 +46,7 @@ const ProductProvider = ({
   const [productList, setProductList] = useState<Product[]>(
     setInitialProductList()
   );
-  const [colorOptions, setColorOptions] = useState(setInitialColorOptions());
+  const [colorOptions, setColorOptions] = useState<ColorOptions[]>(setInitialColorOptions());
 
   const getProductData = async () => {
     const response = await fetch(`${API_URL}/products`);

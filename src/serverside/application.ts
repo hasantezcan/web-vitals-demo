@@ -10,9 +10,10 @@ import App from "../clientside/App";
 import serialize from "serialize-javascript";
 import { routes } from "./routes";
 import axios from "axios";
-import { Product } from "../clientside/interfaces/product";
+import { ColorOptions, Product } from "../clientside/interfaces/product";
 import { API_URL } from "../constants";
 import { Banner } from "../clientside/interfaces/banner";
+import { Suggestions } from "../clientside/interfaces/search-suggestions";
 
 function buildClientSide() {
   return build({
@@ -73,11 +74,11 @@ async function buildReact(content: string) {
 
     fastify.get("/", async (_request, reply) => {
       const products = await axios.get<Product[]>(`${API_URL}/products`);
-      const suggestions = await axios.get<any[]>(
+      const suggestions = await axios.get<Suggestions[]>(
         `${API_URL}/search-suggestion`
       );
       const banners = await axios.get<Banner[]>(`${API_URL}/banners`);
-      const colorOptions = await axios.get<any>(`${API_URL}/color-options`);
+      const colorOptions = await axios.get<ColorOptions[]>(`${API_URL}/color-options`);
 
       // fetch data
       const initialData = {

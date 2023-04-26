@@ -89,12 +89,24 @@
       gap: 10px;
       align-items: center;
       justify-content: center;
+      font-size: 14px;
 
       > .navigation-item {
         display: flex;
         align-items: center;
         gap: 5px;
         cursor: pointer;
+      }
+
+      > .profile {
+        display: grid;
+        img {
+          border-radius: 50%;
+          width: 40px;
+        }
+        span {
+          font-size: 10px;
+        }
       }
     }
   }
@@ -177,6 +189,17 @@
           text-transform: uppercase;
           text-align: center;
         }
+      }
+    }
+    .product-list-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 10px;
+      margin-top: 15px;
+      img {
+        width: 210px;
+        height: 140px;
+        object-fit: cover;
       }
     }
   }
