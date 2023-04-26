@@ -1,6 +1,7 @@
 import { Header } from "./components/Header/Header";
 import { MarketingBanner } from "./components/MarketingBanner/MarketingBanner";
 import { Pdp } from "./components/Pdp/Pdp";
+import { PartyTownHead } from "./components/partyTown";
 import { BannerProvider } from "./context/banner-context";
 import { ProductProvider } from "./context/product-context";
 import { SearchSuggestionProvider } from "./context/search-suggestion-context";
@@ -16,8 +17,11 @@ interface ApplicationProps {
 }
 
 export default function App(props: ApplicationProps) {
+  const partyTownEnable = true;
+
   return (
     <SearchSuggestionProvider initialSearchSuggestions={props.suggestions}>
+      {partyTownEnable && <PartyTownHead />}
       <BannerProvider initialBanners={props.banners}>
         <ProductProvider
           initialProducts={props.products}

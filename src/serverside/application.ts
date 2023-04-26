@@ -58,8 +58,15 @@ async function buildReact(content: string) {
     );
 
     fastify.register(FastifyStatic, {
-      root: path.resolve(process.cwd(), "./public"),
-      prefix: "/public/",
+      root: path.resolve(process.cwd(), "./~partytown"),
+      prefix: "/~partytown",
+      decorateReply: false,
+    });
+
+    fastify.register(FastifyStatic, {
+      root: [path.resolve(process.cwd(), "./public")],
+      prefix: "/public",
+      decorateReply: false,
     });
 
     // block response time for 5 sec

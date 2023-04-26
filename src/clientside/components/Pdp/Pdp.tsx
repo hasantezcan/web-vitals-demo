@@ -32,8 +32,7 @@ const Pdp = () => {
             </p>
             <p className="description">{product.description}</p>
             <MarketingBanner bannerType={BANNER_TYPES.LISTING_BANNER} />
-            {//TODO: add color options
-            }
+
             <div className="add-to-cart-button">ADD TO CART</div>
           </div>
         </div>

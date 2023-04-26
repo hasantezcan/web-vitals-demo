@@ -6,10 +6,15 @@
   "author": "Hasan Tezcan <hasan.tezcan@trendyol.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon ./src/serverside/application.ts",
-    "build": "tsc --project tsconfig.clientside.json && vite build"
+    "partytown": "partytown copylib ~partytown",
+    "dev": "yarn partytown && nodemon ./src/serverside/application.ts ",
+    "build": "yarn partytown && tsc --project tsconfig.clientside.json && vite build"
+  },
+  "engines": {
+    "node": "18.12.1"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.8.0",
     "@fastify/static": "^6.10.1",
     "@loadable/component": "^5.15.3",
     "@loadable/server": "^5.15.3",
