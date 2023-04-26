@@ -8,15 +8,17 @@ import { Banner } from "./interfaces/banner";
 import { Product } from "./interfaces/product";
 
 interface ApplicationProps {
-  products?: Product[],
-  banners?: Banner[],
-  colorOptions?: any[]
+  products?: Product[];
+  banners?: Banner[];
+  colorOptions?: any[];
 }
 export default function App(props: ApplicationProps) {
-  // console.log("🚀 ============================ > props:", props);
   return (
     <BannerProvider initialBanners={props.banners}>
-      <ProductProvider initialProducts={props.products} initialColorOptions={props.colorOptions}>
+      <ProductProvider
+        initialProducts={props.products}
+        initialColorOptions={props.colorOptions}
+      >
         <MarketingBanner bannerType={BANNER_TYPES.TOP_BANNER} />
         <Header />
         <Pdp />

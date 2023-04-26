@@ -6,6 +6,7 @@ import {
 } from "./controllers/product-controllers";
 import { getSearchSuggestion } from "./controllers/search-suggestion-controllers";
 import { getBanners } from "./controllers/banner-controllers";
+import { sendEvent } from "./controllers/event-controllers";
 
 export async function routes(fastify: FastifyInstance) {
   fastify.get("/product", async (_request, reply) =>
@@ -22,5 +23,8 @@ export async function routes(fastify: FastifyInstance) {
   );
   fastify.get("/color-options", async (_request, reply) =>
     getColorOptions(_request, reply)
+  );
+  fastify.post("/send-event", async (_request, reply) =>
+    sendEvent(_request, reply)
   );
 }
