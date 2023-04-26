@@ -1,5 +1,7 @@
 export interface Banner {
-  image: string;
+  imageUrl: string;
   name: string;
-  type: string;
+  type: BannerType;
 }
+
+export type BannerType = "top-banner" | "listing-banner" | "side-banner";

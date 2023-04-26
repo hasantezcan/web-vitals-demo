@@ -1,13 +1,21 @@
-const MarketingBanner = () => {
-  const image = "https://cdn.dsmcdn.com/sfint/production/sale-banner_1682372605742.png";
-  // const image = "https://cdn.dsmcdn.com/ty739/int/banner/20022023a9b20_DE_web_info_banner.jpg";
-  // const image = "https://cdn.dsmcdn.com/ty739/int/banner/20022023a9b20_DE_web_info_banner.jpg"
+import { useBanner } from "../../context/banner-context";
+import { BannerType } from "../../interfaces/banner";
+
+interface MarketingBannerProps {
+  bannerType: BannerType
+}
+const MarketingBanner = ({ bannerType }: MarketingBannerProps) => {
+  const { bannerList } = useBanner();
+
+  if (!bannerList?.length) return null;
+
+  const banner = bannerList.find(({ type }) => type === bannerType);
 
   return (
     <div className="marketing-banner">
-      <img src={image} alt="" />
+      <img src={banner?.imageUrl} alt={banner?.name} />
     </div>
-  );
+  )
 };
 
 export { MarketingBanner };

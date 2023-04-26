@@ -10,11 +10,11 @@ import { Banner } from "../interfaces/banner";
 import { API_URL } from "../../constants";
 
 interface IBannerContext {
-  BannerList: Banner[];
+  bannerList: Banner[];
 }
 
 const defaultBannerContext: IBannerContext = {
-  BannerList: [],
+  bannerList: [],
 };
 
 interface BannerContextProps {
@@ -36,7 +36,7 @@ const BannerProvider = ({
       ? initialBanners
       : [];
 
-  const [BannerList, setBannerList] = useState<Banner[]>(
+  const [bannerList, setBannerList] = useState<Banner[]>(
     setInitialBannerList()
   );
 
@@ -49,13 +49,13 @@ const BannerProvider = ({
   };
 
   useEffect(() => {
-    if (!BannerList?.length) getBannerData();
+    if (!bannerList?.length) getBannerData();
   }, []);
 
   return (
     <BannerContext.Provider
       value={{
-        BannerList,
+        bannerList,
       }}
     >
       {children}
