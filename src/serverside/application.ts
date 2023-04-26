@@ -12,6 +12,7 @@ import { routes } from "./routes";
 import axios from "axios";
 import { Product } from "../clientside/interfaces/product";
 import { API_URL } from "../constants";
+import { Banner } from "../clientside/interfaces/banner";
 
 function buildClientSide() {
   return build({
@@ -75,7 +76,7 @@ async function buildReact(content: string) {
       const suggestions = await axios.get<any[]>(
         `${API_URL}/search-suggestion`
       );
-      const banners = await axios.get<any[]>(`${API_URL}/banners`);
+      const banners = await axios.get<Banner[]>(`${API_URL}/banners`);
 
       // fetch data
       const initialData = {

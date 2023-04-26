@@ -5,14 +5,17 @@ export async function getBanners(request: FastifyRequest, reply: FastifyReply) {
     {
       img: "https://cdn.dsmcdn.com/sfint/production/sale-banner_1682372605742.png",
       name: "sale-20",
+      type: "top-banner"
     },
     {
       img: "https://cdn.dsmcdn.com/ty739/int/banner/20022023a9b20_DE_web_info_banner.jpg",
       name: "welcome-20",
+      type: "listing-banner"
     },
     {
       img: "https://cdn.dsmcdn.com/ty739/int/banner/20022023a9b20_DE_web_info_banner.jpg",
       name: "baybay-20",
+      type: "side-banner"
     },
   ];
 
