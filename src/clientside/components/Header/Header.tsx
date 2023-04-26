@@ -1,26 +1,12 @@
-import { useEffect, useState } from "react";
-import { asyncForEach } from "../../../utils/common";
-// import "./Header.scss";
+import { useState } from "react";
+import { useSearchSuggestion } from "../../context/search-suggestion-context";
 
 const Header = () => {
-  const fetchPeople = async () => {
-    const url = "https://swapi.dev/api/people/";
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  };
-
-  useEffect(() => {
-    const arr = new Array(10).fill(0);
-
-    // asyncForEach(arr, async (num: any) => {
-    //   await fetchPeople();
-    // });
-  }, []);
-
+  const { searchSuggestionList, getSearchSuggestionData } = useSearchSuggestion();
   const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
 
   const handleSearchFocus = () => {
+    getSearchSuggestionData();
     setShowSearchSuggestions(true);
   };
 
@@ -40,7 +26,8 @@ const Header = () => {
           <input
             type="text"
             placeholder="Type the product, category or brand you are looking"
-            onFocus={handleSearchFocus}
+            // onFocus={handleSearchFocus}
+            onChange={handleSearchFocus}
             onBlur={handleSearchBlur}
           />
           <span>
@@ -53,10 +40,11 @@ const Header = () => {
           {showSearchSuggestions && (
             <div className="search-suggestions">
               <div className="search-suggestion">
-                <div className="search-suggestion-item">Nike</div>
-                <div className="search-suggestion-item">Puma</div>
-                <div className="search-suggestion-item">Adidas</div>
-                <div className="search-suggestion-item">Kundura</div>
+                {
+                  searchSuggestionList && Array.isArray(searchSuggestionList) && searchSuggestionList.length ? searchSuggestionList.map(suggestion => {
+                    return <div className="search-suggestion-item" >{suggestion.name}</div>
+                  }) : null
+                }
               </div>
             </div>
           )}

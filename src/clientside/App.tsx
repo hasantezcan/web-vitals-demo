@@ -1,6 +1,6 @@
 import { Header } from "./components/Header/Header";
 import { MarketingBanner } from "./components/MarketingBanner/MarketingBanner";
-import { Pdp } from "./components/Pdp/Pdp";
+import { Pdp } from "./components/ProductDetail/ProductDetail";
 import { PartyTownHead } from "./components/partyTown";
 import { BannerProvider } from "./context/banner-context";
 import { ProductProvider } from "./context/product-context";
@@ -17,7 +17,7 @@ interface ApplicationProps {
 }
 
 export default function App(props: ApplicationProps) {
-  const partyTownEnable = true;
+  const partyTownEnable = false;
 
   return (
     <SearchSuggestionProvider initialSearchSuggestions={props.suggestions}>

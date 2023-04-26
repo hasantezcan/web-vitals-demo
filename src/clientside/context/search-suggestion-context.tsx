@@ -11,10 +11,13 @@ import { Suggestions } from "../interfaces/search-suggestions";
 
 interface ISearchSuggestionContext {
     searchSuggestionList: Suggestions[];
+    getSearchSuggestionData: () => void
+
 }
 
 const defaultSearchSuggestionContext: ISearchSuggestionContext = {
     searchSuggestionList: [],
+    getSearchSuggestionData: () => null
 };
 
 interface SearchSuggestionContextProps {
@@ -41,21 +44,18 @@ const SearchSuggestionProvider = ({
     );
 
     const getSearchSuggestionData = async () => {
-        const response = await fetch(`${API_URL}/search-suggestions`);
+        const response = await fetch(`${API_URL}/search-suggestion`);
         const searchSuggestionData = await response.json();
         if (searchSuggestionData && Array.isArray(searchSuggestionData) && searchSuggestionData.length) {
             setSearchSuggestionList(searchSuggestionData);
         }
     };
 
-    useEffect(() => {
-        if (!searchSuggestionList?.length) getSearchSuggestionData();
-    }, []);
-
     return (
         <SearchSuggestionContext.Provider
             value={{
                 searchSuggestionList,
+                getSearchSuggestionData
             }}
         >
             {children}

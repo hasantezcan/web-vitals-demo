@@ -1,5 +1,5 @@
 import { useProduct } from "../../context/product-context";
-import ProductCard from "./ProductCard/product-card";
+import ProductCard from "../ProductCard/product-card";
 
 const DiscoverMore = ({ title }: { title: string }) => {
     const { productList } = useProduct()

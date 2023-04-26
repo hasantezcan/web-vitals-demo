@@ -201,6 +201,33 @@
           text-align: center;
         }
       }
+      .pdp-code-banner {
+        margin: 15px 0px;
+      }
+      .color-options {
+        display: inline-flex;
+        gap: 20px;
+
+        .color-option {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          cursor: pointer;
+        }
+
+        .color-option:before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: calc(100% + 10px);
+          height: calc(100% + 10px);
+          transform: translate(-50%, -50%);
+          border: 1px solid #333;
+          content: "";
+          border-radius: 50%;
+        }
+      }
     }
 
     .product-list-wrapper {
