@@ -1,17 +1,16 @@
 import { Header } from "./components/Header/Header";
-import { MarketingBanner } from "./components/MarketingBanner/MarketingBanner";
 import { Pdp } from "./components/ProductDetail/ProductDetail";
 import { PartyTownHead } from "./components/partyTown";
-import { BannerProvider } from "./context/banner-context";
+import { BannerProvider, useBanner } from "./context/banner-context";
 import { ProductProvider } from "./context/product-context";
 import { SearchSuggestionProvider } from "./context/search-suggestion-context";
-import { BANNER_TYPES } from "./enums";
 import { Banner } from "./interfaces/banner";
 import { Product } from "./interfaces/product";
 
 interface ApplicationProps {
   products?: Product[];
-  banners?: Banner[];
+  listingBanners?: Banner[];
+  topBanners?: Banner[];
   colorOptions?: any[];
   suggestions?: any[];
 }
@@ -22,12 +21,11 @@ export default function App(props: ApplicationProps) {
   return (
     <SearchSuggestionProvider initialSearchSuggestions={props.suggestions}>
       {partyTownEnable && <PartyTownHead />}
-      <BannerProvider initialBanners={props.banners}>
+      <BannerProvider listingBanners={props.listingBanners} topBanners={props.topBanners}>
         <ProductProvider
           initialProducts={props.products}
           initialColorOptions={props.colorOptions}
         >
-          <MarketingBanner bannerType={BANNER_TYPES.TOP_BANNER} />
           <Header />
           <Pdp />
         </ProductProvider>

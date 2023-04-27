@@ -84,7 +84,10 @@ async function buildReact(content: string) {
       const suggestions = await axios.get<Suggestions[]>(
         `${API_URL}/search-suggestion`
       );
-      const banners = await axios.get<Banner[]>(`${API_URL}/banners`);
+      const listingBanners = await axios.get<Banner[]>(
+        `${API_URL}/listing-banners`
+      );
+      const topBanners = await axios.get<Banner[]>(`${API_URL}/top-banners`);
       const colorOptions = await axios.get<ColorOptions[]>(
         `${API_URL}/color-options`
       );
@@ -93,7 +96,8 @@ async function buildReact(content: string) {
       const initialData = {
         products: products.data,
         suggestions: suggestions.data,
-        banners: banners.data,
+        listingBanners: listingBanners.data,
+        topBanners: topBanners.data,
         colorOptions: colorOptions.data,
       };
       const decodedProps = serialize(initialData, { isJSON: true });

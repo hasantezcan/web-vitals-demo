@@ -1,6 +1,41 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export async function getBanners(request: FastifyRequest, reply: FastifyReply) {
+export async function getListingBanners(request: FastifyRequest, reply: FastifyReply) {
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 5000);
+  });
+
+  const response = [
+    {
+      imageUrl:
+        "https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg",
+      name: "sale-20",
+      type: "listing-banner",
+    },
+    {
+      imageUrl:
+        "https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg",
+      name: "welcome-20",
+      type: "listing-banner",
+    },
+    {
+      imageUrl:
+        "https://cdn.dsmcdn.com/ty739/int/banner/20022023a9b20_DE_web_info_banner.jpg",
+      name: "baybay-20",
+      type: "listing-banner",
+    },
+  ];
+
+  try {
+    reply.code(200).send(response);
+  } catch (error) {
+    reply.code(500).send(error);
+  }
+}
+
+export async function getTopBanners(request: FastifyRequest, reply: FastifyReply) {
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
@@ -18,13 +53,13 @@ export async function getBanners(request: FastifyRequest, reply: FastifyReply) {
       imageUrl:
         "https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg",
       name: "welcome-20",
-      type: "listing-banner",
+      type: "top-banner",
     },
     {
       imageUrl:
         "https://cdn.dsmcdn.com/ty739/int/banner/20022023a9b20_DE_web_info_banner.jpg",
       name: "baybay-20",
-      type: "side-banner",
+      type: "top-banner",
     },
   ];
 

@@ -1,16 +1,22 @@
 import ProductRecommendations from "../ProductRecommendations/ProductRecommendations";
 import { useProduct } from "../../context/product-context";
 import { MarketingBanner } from "../MarketingBanner/MarketingBanner";
-import { BANNER_TYPES } from "../../enums";
 import DiscoverMore from "../ProductRecommendations/DiscoverMore";
 import { ColorOptions } from "../ColorOptions/ColorOptions";
+import { useBanner } from "../../context/banner-context";
+import { useEffect } from "react";
 
 const Pdp = () => {
   const { productList } = useProduct();
+  const { getListingBannerData, listingBannerList } = useBanner();
 
   const product = productList[0];
 
   if (!product) return null;
+
+  useEffect(() => {
+    getListingBannerData();
+  }, [])
 
   return (
     <div className="pdp-wrapper">
@@ -33,7 +39,7 @@ const Pdp = () => {
             </p>
             <p className="description">{product.description}</p>
             <div className="pdp-code-banner">
-              <MarketingBanner bannerType={BANNER_TYPES.LISTING_BANNER} />
+              <MarketingBanner bannerList={listingBannerList} />
             </div>
 
             <ColorOptions />

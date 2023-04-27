@@ -10,15 +10,24 @@ import { Banner } from "../interfaces/banner";
 import { API_URL } from "../../constants";
 
 interface IBannerContext {
-  bannerList: Banner[];
+  topBannerList: Banner[];
+  listingBannerList: Banner[];
+  getListingBannerData: () => void
+  getTopBannerData: () => void
+
 }
 
 const defaultBannerContext: IBannerContext = {
-  bannerList: [],
+  topBannerList: [],
+  listingBannerList: [],
+  getListingBannerData: () => null,
+  getTopBannerData: () => null
 };
 
 interface BannerContextProps {
   initialBanners?: Banner[];
+  listingBanners?: Banner[];
+  topBanners?: Banner[];
 }
 
 const BannerContext: Context<IBannerContext> = createContext(
@@ -29,33 +38,45 @@ const useBanner = () => useContext(BannerContext);
 
 const BannerProvider = ({
   children,
-  initialBanners,
+  listingBanners,
+  topBanners,
 }: PropsWithChildren<BannerContextProps>) => {
-  const setInitialBannerList = () =>
+  const setInitialBannerList = (initialBanners?: Banner[]) =>
     initialBanners && Array.isArray(initialBanners) && initialBanners.length
       ? initialBanners
       : [];
 
-  const [bannerList, setBannerList] = useState<Banner[]>(
-    setInitialBannerList()
-  );
+  const [listingBannerList, setListingBannerList] = useState<Banner[]>(
+    setInitialBannerList(listingBanners));
 
-  const getBannerData = async () => {
-    const response = await fetch(`${API_URL}/banners`);
-    const BannerData = await response.json();
-    if (BannerData && Array.isArray(BannerData) && BannerData.length) {
-      setBannerList(BannerData);
+  const [topBannerList, setTopBannerList] = useState<Banner[]>(
+    setInitialBannerList(topBanners)
+  );
+  const checkBannersExist = (bannerData: Banner[]) => bannerData && Array.isArray(bannerData) && bannerData.length;
+
+  const getTopBannerData = async () => {
+    const topBannerResponse = await fetch(`${API_URL}/top-banners`);
+    const topBanner = await topBannerResponse.json();
+    if (checkBannersExist(topBanner)) {
+      setTopBannerList(topBanner);
     }
   };
 
-  useEffect(() => {
-    if (!bannerList?.length) getBannerData();
-  }, []);
+  const getListingBannerData = async () => {
+    const listingBannerResponse = await fetch(`${API_URL}/listing-banners`);
+    const listingBanner = await listingBannerResponse.json();
+    if (checkBannersExist(listingBanner)) {
+      setListingBannerList(listingBanner);
+    }
+  };
 
   return (
     <BannerContext.Provider
       value={{
-        bannerList,
+        topBannerList,
+        listingBannerList,
+        getTopBannerData,
+        getListingBannerData
       }}
     >
       {children}
