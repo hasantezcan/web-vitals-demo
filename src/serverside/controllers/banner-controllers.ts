@@ -1,10 +1,13 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 
-export async function getListingBanners(request: FastifyRequest, reply: FastifyReply) {
+export async function getListingBanners(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 5000);
+    }, 2000);
   });
 
   const response = [
@@ -35,11 +38,14 @@ export async function getListingBanners(request: FastifyRequest, reply: FastifyR
   }
 }
 
-export async function getTopBanners(request: FastifyRequest, reply: FastifyReply) {
+export async function getTopBanners(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 2000);
+    }, 1000);
   });
 
   const response = [
