@@ -1,4 +1,6 @@
+import { PLACEHOLDER } from "../../../constants";
 import { Product } from "../../interfaces/product";
+import LazyLoad from 'react-lazyload';
 
 interface ProductCardProps {
     product: Product;
@@ -7,7 +9,19 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <div className="product-card-wrapper">
-            <img src={product.images[0]} alt={product.title} />
+            <LazyLoad offset={100} placeholder={<img src={PLACEHOLDER} />}>
+                <img
+                    src={product.images[0]} alt={product.title}
+                    onError={({ currentTarget }) => {
+                        currentTarget.onerror = null;
+                        currentTarget.src = PLACEHOLDER;
+                    }}
+                />
+            </LazyLoad>
+            {/* <img src={product.images[0]} alt={product.title} style={{
+                backgroundImage: `url(${PLACEHOLDER})`
+            }} /> */}
+
             <h2>{product.title}</h2>
             <div className="card-bottom">
                 <p className="price">
