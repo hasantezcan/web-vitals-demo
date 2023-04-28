@@ -26,11 +26,13 @@ const Pdp = () => {
         </p>
 
         <div className="main">
-          <img
-            className="pdp-image"
-            src={product.images[0]}
-            alt={product.title}
-          />
+          <div>
+            <img
+              className="pdp-image"
+              src={product.images[0]}
+              alt={product.title}
+            />
+          </div>
           <div className="pdp-detail">
             <h1 className="title">{product.title}</h1>
             <p className="price">

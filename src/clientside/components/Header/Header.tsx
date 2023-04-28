@@ -23,7 +23,7 @@ const Header = () => {
 
 
   return (
-    <>
+    <div className="page-header">
       <MarketingBanner bannerList={topBannerList} />
       <div className="header-wrapper">
         <div className="header">
@@ -93,7 +93,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
