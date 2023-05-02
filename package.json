@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@builder.io/partytown": "^0.8.0",
+    "@fastify/cors": "^8.2.1",
     "@fastify/static": "^6.10.1",
     "@loadable/component": "^5.15.3",
     "@loadable/server": "^5.15.3",

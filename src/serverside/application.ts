@@ -1,7 +1,8 @@
 import path from "node:path";
 import fs from "node:fs";
-import Fastify from "fastify";
+import Fastify, { FastifyListenOptions } from "fastify";
 import FastifyStatic from "@fastify/static";
+import cors from "@fastify/cors";
 import { build } from "vite";
 import viteReactPlugin from "@vitejs/plugin-react";
 import { renderToString } from "react-dom/server";
@@ -43,25 +44,40 @@ async function buildReact(content: string) {
   return htmlFile.replace(DOM_FLAG, content);
 }
 
+function buildRegularHtml() {
+  const htmlFilePath = path.resolve(
+    process.cwd(),
+    "./partytown.html"
+  );
+
+  const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
+
+  const htmlFile = htmlFileBuffer.toString();
+
+  return htmlFile;
+}
+
 (async () => {
   try {
     const fastify = Fastify({
       logger: true,
     });
 
-    fs.watch(
+    /*fs.watch(
       path.resolve(process.cwd(), "./src/clientside"),
       {},
       async (eventType, filename) => {
         await buildClientSide();
       }
-    );
+    );*/
 
     fastify.register(FastifyStatic, {
       root: path.resolve(process.cwd(), "./~partytown"),
       prefix: "/~partytown",
       decorateReply: false,
     });
+
+    /*
 
     fastify.register(FastifyStatic, {
       root: [path.resolve(process.cwd(), "./public")],
@@ -79,7 +95,9 @@ async function buildReact(content: string) {
     //   });
     // });
 
+    */
     fastify.get("/", async (_request, reply) => {
+      /*
       const products = await axios.get<Product[]>(`${API_URL}/products`);
       const suggestions = await axios.get<Suggestions[]>(
         `${API_URL}/search-suggestion`
@@ -103,7 +121,8 @@ async function buildReact(content: string) {
       const reactComponent = renderToString(
         React.createElement(App, initialData, null)
       );
-      const html = await buildReact(`${script} ${reactComponent}`);
+      */
+      const html = buildRegularHtml();
 
       reply
         .code(200)
@@ -111,6 +130,7 @@ async function buildReact(content: string) {
         .send(Buffer.from(html, "utf-8"));
     });
 
+    /*
     fastify.get("/clientside", async (_request, reply) => {
       const html = await buildReact("");
 
@@ -126,10 +146,12 @@ async function buildReact(content: string) {
       if (err) throw err;
       await buildClientSide();
     });
+    */
 
     const PORT = parseInt(process.env.PORT || "3000");
 
-    await fastify.listen({ port: PORT });
+    await fastify.listen({ port: PORT } as FastifyListenOptions);
+    
   } catch (error) {
     process.exit(0);
   }

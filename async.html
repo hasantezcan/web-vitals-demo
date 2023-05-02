@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <script async type="module">
+      // FID
+      const fidObserver = new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          const delay = entry.processingStart - entry.startTime;
+          console.log("FID:", delay, { entry });
+        }
+      });
+      fidObserver.observe({ type: "first-input", buffered: true });
+
+      // LONG TASK & RESOURCE
+      const obs = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          console.log(entry.entryType, entry.toJSON());
+        }
+      });
+      obs.observe({ type: "longtask", buffered: true });
+      obs.observe({ type: "resource", buffered: true });
+      obs.observe({ type: "paint", buffered: true });
+      obs.observe({ type: "measure", buffered: true });
+    </script>
+  </head>
+  <body>
+    <button id="fid" style="height: 200px; width: 300px">
+      ASYNC SCRIPTING
+    </button>
+
+    <span id="info-span" style="height: 200px; width: 300px"
+      >MAIN THREAD IS FREE T1</span
+    >
+
+    <script async ttype="text/javascript">
+      console.log("SCRIPT START");
+      document.getElementById("fid").addEventListener("click", () => {
+        console.log("EVENT LISTINER IS WORKING..");
+      });
+
+      const spn = document.getElementById("info-span");
+
+      function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+
+        do {
+          currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+      }
+      sleep(5000);
+
+      (async () => {
+        console.log("t1", new Date());
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(true);
+          });
+        }, 3000);
+        console.log("t2", new Date());
+      })();
+
+      spn.innerHTML = "MAIN THREAD IS FREE T2";
+
+      console.log("SCRIPT END");
+    </script>
+  </body>
+</html>

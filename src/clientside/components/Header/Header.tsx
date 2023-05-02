@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchSuggestion } from "../../context/search-suggestion-context";
 
 const Header = () => {
-  const { searchSuggestionList, getSearchSuggestionData } = useSearchSuggestion();
+  const { searchSuggestionList, getSearchSuggestionData } =
+    useSearchSuggestion();
   const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
 
-  const handleSearchFocus = () => {
+  const handleSearchClick = async () => {
+    console.log("event listener start");
     getSearchSuggestionData();
+    await new Promise((res) => {
+      setTimeout(() => {
+        res(true);
+      }, 5000);
+    });
     setShowSearchSuggestions(true);
+    console.log("event listener end");
   };
 
   const handleSearchBlur = () => {
     setShowSearchSuggestions(false);
   };
+
+  useEffect(() => {
+    console.log({ searchSuggestionList });
+  }, [searchSuggestionList]);
 
   return (
     <div className="header-wrapper">
@@ -26,8 +38,7 @@ const Header = () => {
           <input
             type="text"
             placeholder="Type the product, category or brand you are looking"
-            // onFocus={handleSearchFocus}
-            onChange={handleSearchFocus}
+            onClick={handleSearchClick}
             onBlur={handleSearchBlur}
           />
           <span>
@@ -40,11 +51,17 @@ const Header = () => {
           {showSearchSuggestions && (
             <div className="search-suggestions">
               <div className="search-suggestion">
-                {
-                  searchSuggestionList && Array.isArray(searchSuggestionList) && searchSuggestionList.length ? searchSuggestionList.map(suggestion => {
-                    return <div className="search-suggestion-item" >{suggestion.name}</div>
-                  }) : null
-                }
+                {searchSuggestionList &&
+                Array.isArray(searchSuggestionList) &&
+                searchSuggestionList.length
+                  ? searchSuggestionList.map((suggestion) => {
+                      return (
+                        <div className="search-suggestion-item">
+                          {suggestion.name}
+                        </div>
+                      );
+                    })
+                  : null}
               </div>
             </div>
           )}

@@ -167,3 +167,13 @@ export async function getColorOptions(
     reply.code(500).send(error);
   }
 }
+
+
+
+export async function saveUserData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, 1500);
+  });
+}

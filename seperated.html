@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <script defer type="module">
+      import { onFID } from "https://unpkg.com/web-vitals@3?module";
+
+      onFID(console.log);
+    </script>
+  </head>
+  <body>
+    <button id="fid" style="height: 200px; width: 300px">
+      DEFAULT SCRIPTING
+    </button>
+
+    <span id="info-span" style="height: 200px; width: 300px"
+      >MAIN THREAD IS FREE T1</span
+    >
+
+    <script defer type="module">
+      document.getElementById("fid").addEventListener("click", () => {
+        console.log("EVENT LISTINER IS WORKING..");
+      });
+    </script>
+
+    <script async type="module">
+      console.log("SCRIPT START");
+
+      const spn = document.getElementById("info-span");
+
+      function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+
+        do {
+          currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+      }
+      sleep(5000);
+      spn.innerHTML = "MAIN THREAD IS FREE T2";
+
+      console.log("SCRIPT END");
+    </script>
+  </body>
+</html>

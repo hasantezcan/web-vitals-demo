@@ -43,7 +43,7 @@
     </script>
     <!-- End Google Tag Manager -->
 
-    <title>Worst site ever</title>
+    <title>Worst Site Ever</title>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -57,18 +57,39 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <button id="fid" style="height: 40px; width: 200px">
+      DEFAULT SCRIPTING
+    </button>
+
+    <span
+      id="info-span"
+      style="height: 200px; width: 300px; background-color: aqua"
+      >MAIN THREAD IS FREE T1</span
+    >
+
+    <script>
+      console.log("SCRIPT START");
+      document.getElementById("fid").addEventListener("click", () => {
+        console.log("EVENT LISTINER IS WORKING..");
+      });
+
+      const spn = document.getElementById("info-span");
+
+      function sleep(milliseconds) {
+        const date = Date.now();
+        let currentDate = null;
+
+        do {
+          currentDate = Date.now();
+        } while (currentDate - date < milliseconds);
+      }
+      sleep(5000);
+      spn.innerHTML = "MAIN THREAD IS FREE T2";
+      console.log("SCRIPT END");
+    </script>
 
     <div id="root"><!--dom--></div>
 
     <script type="module" src="./main.tsx"></script>
-
-    <!-- create a script block main thread for a 5 sec -->
-    <!-- <script >
-      console.log("start");
-      const start = Date.now();
-      while (Date.now() - start < 15000) {}
-      console.log("end");
-    </script> -->
   </body>
 </html>

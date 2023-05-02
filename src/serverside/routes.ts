@@ -4,6 +4,8 @@ import {
   getProduct,
   getProducts,
 } from "./controllers/product-controllers";
+import { saveBrowserData } from "./controllers/browser";
+import { saveUserData } from "./controllers/user";
 import { getSearchSuggestion } from "./controllers/search-suggestion-controllers";
 import { getBanners } from "./controllers/banner-controllers";
 import { sendEvent } from "./controllers/event-controllers";
@@ -27,4 +29,7 @@ export async function routes(fastify: FastifyInstance) {
   fastify.post("/send-event", async (_request, reply) =>
     sendEvent(_request, reply)
   );
+  fastify.post("/browser", async (_request, _reply) => saveBrowserData());
+
+  fastify.post("/user", async (_request, _reply) => saveUserData());
 }
