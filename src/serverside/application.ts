@@ -2,7 +2,6 @@ import path from "node:path";
 import fs from "node:fs";
 import Fastify, { FastifyListenOptions } from "fastify";
 import FastifyStatic from "@fastify/static";
-import cors from "@fastify/cors";
 import { build } from "vite";
 import viteReactPlugin from "@vitejs/plugin-react";
 import { renderToString } from "react-dom/server";
@@ -45,10 +44,7 @@ async function buildReact(content: string) {
 }
 
 function buildRegularHtml() {
-  const htmlFilePath = path.resolve(
-    process.cwd(),
-    "./partytown.html"
-  );
+  const htmlFilePath = path.resolve(process.cwd(), "./defer.html");
 
   const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
 
@@ -77,13 +73,13 @@ function buildRegularHtml() {
       decorateReply: false,
     });
 
-    /*
-
     fastify.register(FastifyStatic, {
       root: [path.resolve(process.cwd(), "./public")],
       prefix: "/public",
       decorateReply: false,
     });
+
+    /*
 
     // block response time for 5 sec
 
@@ -151,7 +147,6 @@ function buildRegularHtml() {
     const PORT = parseInt(process.env.PORT || "3000");
 
     await fastify.listen({ port: PORT } as FastifyListenOptions);
-    
   } catch (error) {
     process.exit(0);
   }
