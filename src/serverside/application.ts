@@ -79,6 +79,12 @@ function buildRegularHtml() {
       decorateReply: false,
     });
 
+    fastify.register(FastifyStatic, {
+      root: [path.resolve(process.cwd(), "./dummy-scripts")],
+      prefix: "/dummy-scripts",
+      decorateReply: false,
+    });
+
     /*
 
     // block response time for 5 sec
