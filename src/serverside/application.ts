@@ -44,7 +44,7 @@ async function buildReact(content: string) {
 }
 
 function buildRegularHtml() {
-  const htmlFilePath = path.resolve(process.cwd(), "./defer.html");
+  const htmlFilePath = path.resolve(process.cwd(), "./Worst-site-ever.html");
 
   const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
 
@@ -142,13 +142,15 @@ function buildRegularHtml() {
         .send(Buffer.from(html, "utf-8"));
     });
 
-    fastify.register(routes, { prefix: "/api" });
+    
 
     fastify.ready(async (err) => {
       if (err) throw err;
       await buildClientSide();
     });
     */
+
+    fastify.register(routes, { prefix: "/api" });
 
     const PORT = parseInt(process.env.PORT || "3000");
 
