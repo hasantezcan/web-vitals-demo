@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 }
-@import "./header.scss";
-@import "./marketing-banner.scss";
-@import "./product-detail.scss";
+@import "./Header/header.scss";
+@import "./ProductDetail/product-detail.scss";
+@import "./ProductRecommendations/product-recommendations.scss";
+@import "./ProductRecommendations/discover-more.scss";

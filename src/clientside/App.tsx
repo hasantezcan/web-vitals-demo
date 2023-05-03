@@ -1,5 +1,7 @@
 import { Header } from "./components/Header/Header";
 import { Pdp } from "./components/ProductDetail/ProductDetail";
+import DiscoverMore from "./components/ProductRecommendations/DiscoverMore";
+import ProductRecommendations from "./components/ProductRecommendations/ProductRecommendations";
 import { PartyTownHead } from "./components/partyTown";
 import { BannerProvider, useBanner } from "./context/banner-context";
 import { ProductProvider } from "./context/product-context";
@@ -28,6 +30,8 @@ export default function App(props: ApplicationProps) {
         >
           <Header />
           <Pdp />
+          <DiscoverMore title="You may also like" />
+          <ProductRecommendations title="Recommended Products" />
         </ProductProvider>
       </BannerProvider>
     </SearchSuggestionProvider>

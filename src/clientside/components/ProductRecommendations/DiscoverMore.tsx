@@ -7,14 +7,16 @@ const DiscoverMore = ({ title }: { title: string }) => {
     if (!productList?.length) return null;
 
     return (
-        <div>
-            <h1 className="title">{title}</h1>
-            <div className="product-list-wrapper">
-                <ul className="product-list">
-                    {productList.map(product => {
-                        return <ProductCard product={product} />
-                    })}
-                </ul>
+        <div className="discover-more-wrapper">
+            <div className="discover-more">
+                <p className="title">{title}</p>
+                <div className="product-list-wrapper">
+                    <ul className="product-list">
+                        {productList.map(product => {
+                            return <ProductCard product={product} />
+                        })}
+                    </ul>
+                </div>
             </div>
         </div>
     );

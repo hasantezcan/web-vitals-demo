@@ -1,0 +1,39 @@
+.recommendations-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+
+  .recommendations {
+    width: 1200px;
+
+    p {
+      font-size: 24px;
+    }
+    .pdp-carousel {
+      padding: 15px 0;
+      height: 100%;
+
+      .pdp-carousel-image {
+        width: 250px;
+        height: 170px;
+        object-fit: cover;
+      }
+
+      .arrow-wrapper {
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 170px;
+
+        > .arrow {
+          margin: 20px 0;
+          cursor: pointer;
+          background-color: #e8e8e8;
+          padding: 30px 10px;
+        }
+      }
+    }
+  }
+}
