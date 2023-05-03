@@ -1,0 +1,28 @@
+.attributes-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  > .title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0 10px;
+  }
+  > .product-list {
+    overflow: auto;
+    white-space: nowrap;
+    padding: 5px 7px 5px 20px;
+    background: transparent;
+    height: 100%;
+    border-radius: 15px;
+
+    > .product-card-wrapper {
+      display: inline-block;
+      img {
+        width: 20%;
+      }
+    }
+  }
+}

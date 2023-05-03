@@ -13,7 +13,7 @@ export async function getListingBanners(
   const response = [
     {
       imageUrl:
-        "https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg",
+        "https://cdn.dsmcdn.com/marketing/datascience/automation/2023/4/24/Mweb_Pdp_202304241557.jpg",
       name: "sale-20",
       type: "listing-banner",
     },

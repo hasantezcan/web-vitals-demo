@@ -6,6 +6,7 @@
   .pdp {
     margin-top: 15px;
     width: 1200px;
+    // width: 80%;
 
     .breadcrumb {
       line-height: 17px;
@@ -17,11 +18,13 @@
     .main {
       display: flex;
       padding-bottom: 30px;
-     
+
       .pdp-image {
-        // width: 750px;
-        height: 500px;
-        object-fit: cover;
+        img {
+          // width: 750px;
+          height: 500px;
+          object-fit: cover;
+        }
       }
 
       .pdp-detail {
@@ -74,9 +77,25 @@
           text-align: center;
         }
       }
+
       .pdp-code-banner {
-        margin: 15px 0px;
+        > .marketing-banner {
+          height: 100%;
+          margin: 15px 0px;
+          // height: calc((60 / 375) * 20vw);
+          // width: 100%;
+          // z-index: 10;
+          // display: block;
+          // min-height: 60px;
+          // object-fit: cover;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
       }
+
       .color-options {
         display: inline-flex;
         gap: 20px;
@@ -126,6 +145,7 @@
 
           img {
             width: 100%;
+            // height: 325px;
           }
 
           .card-bottom {
@@ -173,6 +193,14 @@
 
           button:hover {
             opacity: 0.7;
+          }
+          .lazyload-wrapper {
+            img {
+              // width: 285px !important;
+              // width: calc((100vw * 0.8 - 3 * 20px) / 4);
+              // height: 190px !important;
+              object-fit: cover;
+            }
           }
         }
       }

@@ -26,9 +26,8 @@ const Pdp = () => {
         </p>
 
         <div className="main">
-          <div>
+          <div className="pdp-image">
             <img
-              className="pdp-image"
               src={product.images[0]}
               alt={product.title}
             />
@@ -48,9 +47,8 @@ const Pdp = () => {
             <div className="add-to-cart-button">ADD TO CART</div>
           </div>
         </div>
-
-        <ProductRecommendations title="Recommended Products" />
         <DiscoverMore title="You may also like" />
+        <ProductRecommendations title="Recommended Products" />
       </div>
     </div>
   );
