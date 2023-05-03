@@ -132,9 +132,9 @@ function buildRegularHtml() {
         .send(Buffer.from(html, "utf-8"));
     });
 
-    /*
+    
     fastify.get("/clientside", async (_request, reply) => {
-      const html = await buildReact("");
+      const html = buildRegularHtml();
 
       reply
         .code(200)
@@ -144,11 +144,10 @@ function buildRegularHtml() {
 
     
 
-    fastify.ready(async (err) => {
-      if (err) throw err;
-      await buildClientSide();
-    });
-    */
+    // fastify.ready(async (err) => {
+    //   if (err) throw err;
+    //   await buildClientSide();
+    // });
 
     fastify.register(routes, { prefix: "/api" });
 

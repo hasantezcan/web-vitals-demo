@@ -1,124 +1,448 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- <link
+    <script type="module">
+      // FID
+      const fidObserver = new PerformanceObserver((entryList) => {
+        for (const entry of entryList.getEntries()) {
+          const delay = entry.processingStart - entry.startTime;
+          console.log("FID:", delay, { entry });
+        }
+      });
+      fidObserver.observe({ type: "first-input", buffered: true });
+
+      // LONG TASK & RESOURCE
+      // const obs = new PerformanceObserver((list) => {
+      //   for (const entry of list.getEntries()) {
+      //     console.log(entry.entryType, entry.toJSON());
+      //   }
+      // });
+      // obs.observe({ type: "longtask", buffered: true });
+      // obs.observe({ type: "resource", buffered: true });
+      // obs.observe({ type: "paint", buffered: true });
+      // obs.observe({ type: "measure", buffered: true });
+    </script>
+
+    <!-- <link
     rel="preload"
     href="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s"
     as="image"
   /> -->
 
-  <!-- Google Tag Manager -->
-  <!-- <script> -->
-  <script gtm="GTM-MV48WL7" type="text/javascript" async="" src="https://www.googleoptimize.com/optimize.js?id=OPT-PSDGFJD"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-MV48WL7"></script><script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != "dataLayer" ? "&l=" + l : "";
-      j.async = true;
-      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, "script", "dataLayer", "GTM-MV48WL7");
-  </script>
-  <!-- End Google Tag Manager -->
+    <!-- Google Tag Manager -->
+    <!-- <script> -->
+    <script
+      gtm="GTM-MV48WL7"
+      type="text/javascript"
+      async=""
+      src="https://www.googleoptimize.com/optimize.js?id=OPT-PSDGFJD"
+    ></script>
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtm.js?id=GTM-MV48WL7"
+    ></script>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MV48WL7");
+    </script>
+    <!-- End Google Tag Manager -->
 
-  <title>Worst site ever</title>
-  <script type="module" crossorigin="" src="/public/assets/index-f1202024.js"></script>
-  <link rel="stylesheet" href="/public/assets/index-e3a991b7.css">
-<style type="text/css">.styles-module_carousel-base__3keqD {
-width: 100%;
-box-sizing: border-box;
-display: flex;
-outline: none;
-position: relative;
-}
+    <title>Worst site ever</title>
+    <link rel="stylesheet" href="/public/assets/index-e3a991b7.css" />
+    <style type="text/css">
+      .styles-module_carousel-base__3keqD {
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        outline: none;
+        position: relative;
+      }
 
-.styles-module_item-provider__YgMwz {
-overflow: hidden;
-width: 100%;
-cursor: pointer;
-}
+      .styles-module_item-provider__YgMwz {
+        overflow: hidden;
+        width: 100%;
+        cursor: pointer;
+      }
 
-.styles-module_item-container__a8zaY img {
--webkit-user-select: none;
+      .styles-module_item-container__a8zaY img {
+        -webkit-user-select: none;
         user-select: none;
--webkit-user-drag: none;
-}
+        -webkit-user-drag: none;
+      }
 
-.styles-module_item-tracker__3bypy {
-height: 100%;
-display: flex;
-}
+      .styles-module_item-tracker__3bypy {
+        height: 100%;
+        display: flex;
+      }
 
-.styles-module_carousel-arrow__26sRw {
-z-index: 1;
-}
-</style><style type="text/css">.styles-module_carousel-navigation__1g_vs {
-display: flex;
-position: absolute;
-bottom: 0;
-}
-</style><style type="text/css">.styles-module_sliderBase__swkx1 {
-width: 100%;
-position: relative;
-}
+      .styles-module_carousel-arrow__26sRw {
+        z-index: 1;
+      }
+    </style>
+    <style type="text/css">
+      .styles-module_carousel-navigation__1g_vs {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+      }
+    </style>
+    <style type="text/css">
+      .styles-module_sliderBase__swkx1 {
+        width: 100%;
+        position: relative;
+      }
 
-.styles-module_slider__o0fqa {
-display: flex;
-overflow-x: auto;
-scrollbar-width: none; /* Firefox 64 */
--ms-overflow-style: none; /* Internet Explorer 11 */
-}
+      .styles-module_slider__o0fqa {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none; /* Firefox 64 */
+        -ms-overflow-style: none; /* Internet Explorer 11 */
+      }
 
-.styles-module_slider__o0fqa::-webkit-scrollbar {
-/** WebKit */
-display: none;
-}
+      .styles-module_slider__o0fqa::-webkit-scrollbar {
+        /** WebKit */
+        display: none;
+      }
 
-.styles-module_slider__o0fqa > * {
-flex: 0 0 auto;
-}
+      .styles-module_slider__o0fqa > * {
+        flex: 0 0 auto;
+      }
 
-.styles-module_sliding__3T6T6 > * {
-pointer-events: none;
-}
-</style><script async="" src="https://static.hotjar.com/c/hotjar-3467667.js?sv=6"></script></head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-MV48WL7"
-      height="0"
-      width="0"
-      style="display: none; visibility: hidden"
-    ></iframe
-  ></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+      .styles-module_sliding__3T6T6 > * {
+        pointer-events: none;
+      }
+    </style>
+    <script async type="module" src="./dummy-scripts/mt-blocker.js"></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
 
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <!-- End Google Tag Manager (noscript) -->
+    <button id="fid" style="height: 200px; width: 300px">
+      WORST BUTTON EVER
+    </button>
 
-  <div id="root"><div class="page-header"><div class="marketing-banner"><img src="https://cdn.dsmcdn.com/sfint/production/sale-banner_1682372605742.png" alt="sale-20"></div><div class="header-wrapper"><div class="header"><img class="ty-logo" src="https://cdn.dsmcdn.com/web/logo/ty-web.svg" alt=""><div class="search-bar"><input type="text" placeholder="Type the product, category or brand you are looking"><span><img class="search-icon" src="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg"></span></div><div class="navigations"><div class="navigation-item login"><img src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg" alt=""><span>Account</span></div><div class="navigation-item fav"><img src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg" alt=""><span>Favorites</span></div><div class="navigation-item cart"><img src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg" alt=""><span>Cart</span></div><div class="navigation-item profile"><a href="https://www.subaymuco.com/" target="_blank"><img src="https://www.subaymuco.com/_next/image?url=%2Fmuco-images%2Fsubay-muco.jpg&amp;w=750&amp;q=75" alt="subay-muco"><span>Subay Muco</span></a></div></div></div></div></div><div class="pdp-wrapper"><div class="pdp"><p class="breadcrumb">Shoes &gt; Sports Shoes &gt; Sneakers</p><div class="main"><div><img class="pdp-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt="Nike Runner"></div><div class="pdp-detail"><h1 class="title">Nike Runner</h1><p class="price"><span class="price-value">₺ 44.99</span><span class="price-without-discount">₺ 89,99</span></p><p class="description">Description Gray sneaker, structured Flat heel Small heel height, between 1-4 cm Upper: 100% Synthetic;Inner Material: 100% Textile;Outsole: 100% Rubber Care Instructions See care label for detailed care instructions. Additional Info Dispatched and sold by Shoes24. From this product can A maximum of 10 pieces can be ordered. Trendyol reserves the right to cancel orders over 10 pieces cancel.</p><div class="pdp-code-banner"><div class="marketing-banner"><img src="https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg" alt="sale-20"></div></div><div class="color-options"><div class="color-option" style="background-color: black; border: 1px solid black;"></div><div class="color-option" style="background-color: white; border: 1px solid white;"></div><div class="color-option" style="background-color: red; border: 1px solid red;"></div><div class="color-option" style="background-color: blue; border: 1px solid blue;"></div><div class="color-option" style="background-color: yellow; border: 1px solid yellow;"></div><div class="color-option" style="background-color: green; border: 1px solid green;"></div></div><div class="add-to-cart-button">ADD TO CART</div></div></div><div><h1 class="title">Recommended Products</h1><div data-testid="carousel" tabindex="0" class="styles-module_carousel-base__3keqD pdp-carousel"><div class="styles-module_item-provider__YgMwz"><div data-testid="trackList" class="styles-module_item-tracker__3bypy" style="transform: translateX(0px); transition: transform 0s ease 0s; width: 1560.88px;"><div class="styles-module_item-container__a8zaY" style="width: 260.146px; pointer-events: all;"><img class="pdp-carousel-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s" alt=""></div><div class="styles-module_item-container__a8zaY" style="width: 260.146px; pointer-events: all;"><img class="pdp-carousel-image" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt=""></div><div class="styles-module_item-container__a8zaY" style="width: 260.146px; pointer-events: all;"><img class="pdp-carousel-image" src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt=""></div><div class="styles-module_item-container__a8zaY" style="width: 260.146px; pointer-events: all;"><img class="pdp-carousel-image" src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt=""></div><div class="styles-module_item-container__a8zaY" style="width: 260.146px; pointer-events: all;"><img class="pdp-carousel-image" src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt=""></div><div class="styles-module_item-container__a8zaY" style="width: 260.146px; pointer-events: all;"><img class="pdp-carousel-image" src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt=""></div></div></div><div><span class="arrow-wrapper"><p class="arrow"> &gt;</p></span></div></div></div><div><h1 class="title">You may also like</h1><div class="product-list-wrapper"><ul class="product-list"><div class="product-card-wrapper"><div class="lazyload-wrapper "><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt="Nike Runner"></div><h2>Nike Runner</h2><div class="card-bottom"><p class="price"><span class="price-value">₺ 44.99</span><span class="price-without-discount">₺ 89,99</span></p><button>Add to Cart</button></div></div><div class="product-card-wrapper"><div class="lazyload-wrapper "><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8" alt="Nike Air Max"></div><h2>Nike Air Max</h2><div class="card-bottom"><p class="price"><span class="price-value">₺ 100.99</span><span class="price-without-discount">₺ 89,99</span></p><button>Add to Cart</button></div></div><div class="product-card-wrapper"><div class="lazyload-wrapper "><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s" alt="Nike Air Max"></div><h2>Nike Air Max</h2><div class="card-bottom"><p class="price"><span class="price-value">₺ 100.99</span><span class="price-without-discount">₺ 89,99</span></p><button>Add to Cart</button></div></div><div class="product-card-wrapper"><div class="lazyload-wrapper "><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s" alt="Nike Air Max"></div><h2>Nike Air Max</h2><div class="card-bottom"><p class="price"><span class="price-value">₺ 100.99</span><span class="price-without-discount">₺ 89,99</span></p><button>Add to Cart</button></div></div><div class="product-card-wrapper"><div class="lazyload-wrapper "><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s" alt="Nike Air Max"></div><h2>Nike Air Max</h2><div class="card-bottom"><p class="price"><span class="price-value">₺ 100.99</span><span class="price-without-discount">₺ 89,99</span></p><button>Add to Cart</button></div></div><div class="product-card-wrapper"><div class="lazyload-wrapper "><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s" alt="Nike Air Max"></div><h2>Nike Air Max</h2><div class="card-bottom"><p class="price"><span class="price-value">₺ 100.99</span><span class="price-without-discount">₺ 89,99</span></p><button>Add to Cart</button></div></div></ul></div></div></div></div></div>
-
-  
-
-  <!-- create a script block main thread for a 5 sec -->
-  <!-- <script >
-    console.log("start");
-    const start = Date.now();
-    while (Date.now() - start < 15000) {}
-    console.log("end");
-  </script> -->
-
-
-<script type="text/javascript" id="">console.log("abbas");</script>
-<script type="text/javascript" id="">(function(a,c,e,f,d,b){a.hj=a.hj||function(){(a.hj.q=a.hj.q||[]).push(arguments)};a._hjSettings={hjid:3467667,hjsv:6};d=c.getElementsByTagName("head")[0];b=c.createElement("script");b.async=1;b.src=e+a._hjSettings.hjid+f+a._hjSettings.hjsv;d.appendChild(b)})(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv\x3d");</script><script type="text/javascript" id="">setInterval(function(){fetch("http://localhost:3000/api/send-event",{method:"POST",body:JSON.stringify({name:"Fred",age:12})})},5E3);</script></body></html>
+    <div id="root">
+      <div class="page-header">
+        <div class="marketing-banner">
+          <img
+            src="https://cdn.dsmcdn.com/sfint/production/sale-banner_1682372605742.png"
+            alt="sale-20"
+          />
+        </div>
+        <div class="header-wrapper">
+          <div class="header">
+            <img
+              class="ty-logo"
+              src="https://cdn.dsmcdn.com/web/logo/ty-web.svg"
+              alt=""
+            />
+            <div class="search-bar">
+              <input
+                id="fid-search"
+                type="text"
+                placeholder="Type the product, category or brand you are looking"
+              /><span
+                ><img
+                  class="search-icon"
+                  src="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg"
+              /></span>
+            </div>
+            <div class="navigations">
+              <div class="navigation-item login">
+                <img
+                  src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg"
+                  alt=""
+                /><span>Account</span>
+              </div>
+              <div class="navigation-item fav">
+                <img
+                  src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg"
+                  alt=""
+                /><span>Favorites</span>
+              </div>
+              <div class="navigation-item cart">
+                <img
+                  src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg"
+                  alt=""
+                /><span>Cart</span>
+              </div>
+              <div class="navigation-item profile">
+                <a href="https://www.subaymuco.com/" target="_blank"
+                  ><img
+                    src="https://www.subaymuco.com/_next/image?url=%2Fmuco-images%2Fsubay-muco.jpg&amp;w=750&amp;q=75"
+                    alt="subay-muco"
+                  /><span>Subay Muco</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pdp-wrapper">
+        <div class="pdp">
+          <p class="breadcrumb">Shoes &gt; Sports Shoes &gt; Sneakers</p>
+          <div class="main">
+            <div>
+              <img
+                class="pdp-image"
+                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                alt="Nike Runner"
+              />
+            </div>
+            <div class="pdp-detail">
+              <h1 class="title">Nike Runner</h1>
+              <p class="price">
+                <span class="price-value">₺ 44.99</span
+                ><span class="price-without-discount">₺ 89,99</span>
+              </p>
+              <p class="description">
+                Description Gray sneaker, structured Flat heel Small heel
+                height, between 1-4 cm Upper: 100% Synthetic;Inner Material:
+                100% Textile;Outsole: 100% Rubber Care Instructions See care
+                label for detailed care instructions. Additional Info Dispatched
+                and sold by Shoes24. From this product can A maximum of 10
+                pieces can be ordered. Trendyol reserves the right to cancel
+                orders over 10 pieces cancel.
+              </p>
+              <div class="pdp-code-banner">
+                <div class="marketing-banner">
+                  <img
+                    src="https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg"
+                    alt="sale-20"
+                  />
+                </div>
+              </div>
+              <div class="color-options">
+                <div
+                  class="color-option"
+                  style="background-color: black; border: 1px solid black"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: white; border: 1px solid white"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: red; border: 1px solid red"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: blue; border: 1px solid blue"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: yellow; border: 1px solid yellow"
+                ></div>
+                <div
+                  class="color-option"
+                  style="background-color: green; border: 1px solid green"
+                ></div>
+              </div>
+              <div class="add-to-cart-button">ADD TO CART</div>
+            </div>
+          </div>
+          <div>
+            <h1 class="title">Recommended Products</h1>
+            <div
+              data-testid="carousel"
+              tabindex="0"
+              class="styles-module_carousel-base__3keqD pdp-carousel"
+            >
+              <div class="styles-module_item-provider__YgMwz">
+                <div
+                  data-testid="trackList"
+                  class="styles-module_item-tracker__3bypy"
+                  style="
+                    transform: translateX(0px);
+                    transition: transform 0s ease 0s;
+                    width: 1560.88px;
+                  "
+                >
+                  <div
+                    class="styles-module_item-container__a8zaY"
+                    style="width: 260.146px; pointer-events: all"
+                  >
+                    <img
+                      class="pdp-carousel-image"
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="styles-module_item-container__a8zaY"
+                    style="width: 260.146px; pointer-events: all"
+                  >
+                    <img
+                      class="pdp-carousel-image"
+                      src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="styles-module_item-container__a8zaY"
+                    style="width: 260.146px; pointer-events: all"
+                  >
+                    <img
+                      class="pdp-carousel-image"
+                      src="https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="styles-module_item-container__a8zaY"
+                    style="width: 260.146px; pointer-events: all"
+                  >
+                    <img
+                      class="pdp-carousel-image"
+                      src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="styles-module_item-container__a8zaY"
+                    style="width: 260.146px; pointer-events: all"
+                  >
+                    <img
+                      class="pdp-carousel-image"
+                      src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt=""
+                    />
+                  </div>
+                  <div
+                    class="styles-module_item-container__a8zaY"
+                    style="width: 260.146px; pointer-events: all"
+                  >
+                    <img
+                      class="pdp-carousel-image"
+                      src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span class="arrow-wrapper"><p class="arrow">&gt;</p></span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <h1 class="title">You may also like</h1>
+            <div class="product-list-wrapper">
+              <ul class="product-list">
+                <div class="product-card-wrapper">
+                  <div class="lazyload-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt="Nike Runner"
+                    />
+                  </div>
+                  <h2>Nike Runner</h2>
+                  <div class="card-bottom">
+                    <p class="price">
+                      <span class="price-value">₺ 44.99</span
+                      ><span class="price-without-discount">₺ 89,99</span>
+                    </p>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+                <div class="product-card-wrapper">
+                  <div class="lazyload-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8"
+                      alt="Nike Air Max"
+                    />
+                  </div>
+                  <h2>Nike Air Max</h2>
+                  <div class="card-bottom">
+                    <p class="price">
+                      <span class="price-value">₺ 100.99</span
+                      ><span class="price-without-discount">₺ 89,99</span>
+                    </p>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+                <div class="product-card-wrapper">
+                  <div class="lazyload-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s"
+                      alt="Nike Air Max"
+                    />
+                  </div>
+                  <h2>Nike Air Max</h2>
+                  <div class="card-bottom">
+                    <p class="price">
+                      <span class="price-value">₺ 100.99</span
+                      ><span class="price-without-discount">₺ 89,99</span>
+                    </p>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+                <div class="product-card-wrapper">
+                  <div class="lazyload-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s"
+                      alt="Nike Air Max"
+                    />
+                  </div>
+                  <h2>Nike Air Max</h2>
+                  <div class="card-bottom">
+                    <p class="price">
+                      <span class="price-value">₺ 100.99</span
+                      ><span class="price-without-discount">₺ 89,99</span>
+                    </p>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+                <div class="product-card-wrapper">
+                  <div class="lazyload-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s"
+                      alt="Nike Air Max"
+                    />
+                  </div>
+                  <h2>Nike Air Max</h2>
+                  <div class="card-bottom">
+                    <p class="price">
+                      <span class="price-value">₺ 100.99</span
+                      ><span class="price-without-discount">₺ 89,99</span>
+                    </p>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+                <div class="product-card-wrapper">
+                  <div class="lazyload-wrapper">
+                    <img
+                      src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8s"
+                      alt="Nike Air Max"
+                    />
+                  </div>
+                  <h2>Nike Air Max</h2>
+                  <div class="card-bottom">
+                    <p class="price">
+                      <span class="price-value">₺ 100.99</span
+                      ><span class="price-without-discount">₺ 89,99</span>
+                    </p>
+                    <button>Add to Cart</button>
+                  </div>
+                </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
