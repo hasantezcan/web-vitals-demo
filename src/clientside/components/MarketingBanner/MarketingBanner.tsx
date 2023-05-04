@@ -2,10 +2,12 @@ import { Banner } from "../../interfaces/banner";
 
 interface MarketingBannerProps {
   bannerList: Banner[];
+  bannerType?: string;
 }
 const MarketingBanner = ({ bannerList }: MarketingBannerProps) => {
 
-  if (!bannerList?.length) return null; // add placeholder if data is not exist
+  if (!bannerList?.length && !bannerList[0]?.imageUrl) return null;
+
 
   return (
     <div className="marketing-banner">

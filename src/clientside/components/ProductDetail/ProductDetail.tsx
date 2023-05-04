@@ -4,14 +4,17 @@ import DiscoverMore from "../ProductRecommendations/DiscoverMore";
 import { Breadcrumb } from "../Breadcrumb/breadcrumb";
 import { Image } from "./Image"
 import { Info } from "./Info";
+interface PdpProps {
+  isSsr?: boolean
+}
 
-const Pdp = () => {
+const Pdp = ({ isSsr }: PdpProps) => {
   const { productList } = useProduct();
 
   const product = productList[0];
 
   if (!product) return null;
-
+  
   return (
     <div className="pdp-wrapper">
       <div className="pdp">

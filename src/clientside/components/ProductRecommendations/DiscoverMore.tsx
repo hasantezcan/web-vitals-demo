@@ -12,8 +12,9 @@ const DiscoverMore = ({ title }: { title: string }) => {
                 <p className="title">{title}</p>
                 <div className="product-list-wrapper">
                     <ul className="product-list">
-                        {productList.map(product => {
-                            return <ProductCard product={product} />
+                        {productList.map((product, index) => {
+                            if (index !== 0)
+                                return <ProductCard product={product} />
                         })}
                     </ul>
                 </div>

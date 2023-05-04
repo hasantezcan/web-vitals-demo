@@ -15,6 +15,7 @@ interface ApplicationProps {
   topBanners?: Banner[];
   colorOptions?: any[];
   suggestions?: any[];
+  isSsr?: boolean;
 }
 
 export default function App(props: ApplicationProps) {
@@ -29,9 +30,9 @@ export default function App(props: ApplicationProps) {
           initialColorOptions={props.colorOptions}
         >
           <Header />
-          <Pdp />
+          <Pdp isSsr={props.isSsr} />
           <DiscoverMore title="You may also like" />
-          <ProductRecommendations title="Recommended Products" />
+          {/* <ProductRecommendations title="Recommended Products" /> */}
         </ProductProvider>
       </BannerProvider>
     </SearchSuggestionProvider>

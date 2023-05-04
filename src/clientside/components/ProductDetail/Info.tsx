@@ -26,8 +26,9 @@ const Info = ({ product }: InfoProps) => {
             <div className="pdp-code-banner">
                 <MarketingBanner bannerList={listingBannerList} />
             </div>
-
-            <ColorOptions />
+            <div className="color-options-wrapper">
+                <ColorOptions />
+            </div>
             <div className="add-to-cart-button">ADD TO CART</div>
         </div>
     )

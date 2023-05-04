@@ -12,10 +12,10 @@
     .main {
       display: flex;
       padding-bottom: 30px;
+      height: 60vh;
 
       @import "./image";
       @import "./info";
-      @import "../ColorOptions/color-options.scss";
     }
   }
 }

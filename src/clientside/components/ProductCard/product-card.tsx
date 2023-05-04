@@ -9,7 +9,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <div className="product-card-wrapper">
-            <LazyLoad once placeholder={<img src={PLACEHOLDER} />}>
+            <LazyLoad placeholder={<img src={PLACEHOLDER} />}>
                 <img
                     src={product.images[0]} alt={product.title}
                     onError={({ currentTarget }) => {

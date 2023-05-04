@@ -4,6 +4,7 @@ import { useBanner } from "../../context/banner-context";
 import { ICONS } from "../../icons/icons";
 import { Search } from "./Search";
 import { Navigations } from "./Navigations";
+import { MarketingBannerWithPlaceholder } from "../MarketingBanner/MarketingBannerWithPlaceholder";
 
 const Header = () => {
   const { getTopBannerData, topBannerList } = useBanner();
@@ -15,7 +16,10 @@ const Header = () => {
 
   return (
     <div className="page-header">
-      <MarketingBanner bannerList={topBannerList} />
+      <div className="banner">
+        <MarketingBanner bannerList={topBannerList} />
+        {/* <MarketingBannerWithPlaceholder bannerList={topBannerList} bannerType="header" /> */}
+      </div>
       <div className="header-wrapper">
         <div className="header">
           <img
