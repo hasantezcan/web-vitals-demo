@@ -1,0 +1,21 @@
+.pdp-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .pdp {
+    margin-top: 15px;
+    width: 1200px;
+    // width: 80%;
+    @import "./breadcrumb.scss";
+
+    .main {
+      display: flex;
+      padding-bottom: 30px;
+      height: 60vh;
+
+      @import "./image";
+      @import "./info";
+    }
+  }
+}

@@ -87,6 +87,7 @@ async function buildReact(content: string) {
       const listingBanners = await axios.get<Banner[]>(
         `${API_URL}/listing-banners`
       );
+      //to show user banner remove banner server side request and fetch data in client side
       const topBanners = await axios.get<Banner[]>(`${API_URL}/top-banners`);
       const colorOptions = await axios.get<ColorOptions[]>(
         `${API_URL}/color-options`
@@ -99,6 +100,7 @@ async function buildReact(content: string) {
         listingBanners: listingBanners.data,
         topBanners: topBanners.data,
         colorOptions: colorOptions.data,
+        isSsr: true,
       };
       const decodedProps = serialize(initialData, { isJSON: true });
       const script = `<script>window["initialData"]=${decodedProps}</script>`;

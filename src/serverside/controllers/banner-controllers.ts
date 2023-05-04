@@ -1,4 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
+import { Banner } from "../../clientside/interfaces/banner";
 
 export async function getListingBanners(
   request: FastifyRequest,
@@ -13,7 +14,7 @@ export async function getListingBanners(
   const response = [
     {
       imageUrl:
-        "https://cdn.dsmcdn.com/sfint/production/web_search2x_1680641396786.jpg",
+        "https://cdn.dsmcdn.com/marketing/datascience/automation/2023/4/24/Mweb_Pdp_202304241557.jpg",
       name: "sale-20",
       type: "listing-banner",
     },
@@ -30,7 +31,7 @@ export async function getListingBanners(
       type: "listing-banner",
     },
   ];
-
+  const emptyResponse = [] as Banner[];
   try {
     reply.code(200).send(response);
   } catch (error) {
@@ -45,7 +46,7 @@ export async function getTopBanners(
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 1000);
+    }, 3000);
   });
 
   const response = [
@@ -68,7 +69,7 @@ export async function getTopBanners(
       type: "top-banner",
     },
   ];
-
+  const emptyResponse = [] as Banner[];
   try {
     reply.code(200).send(response);
   } catch (error) {
