@@ -4,7 +4,8 @@
   justify-content: center;
 
   .discover-more {
-    width: 1200px;
+    // width: 1200px;
+    width: 60vw;
 
     p {
       font-size: 24px;
@@ -32,12 +33,13 @@
           }
 
           .lazyload-wrapper {
+            // calculation for assign width according to responsive grid structure
+            // width: calc((100vw * 0.6 - 3 * 20px) / 4);
+            // height: calc(100vw * 0.6 * (91 / 256));
+
             img {
-              // width: 285px !important;
-              // // width: calc((100vw * 0.8 - 3 * 20px) / 4);
-              // height: 190px !important;
-              // height: 190px;
-              width: 285px !important;
+              width: 100%;
+              height: 100%;
               object-fit: cover;
             }
           }

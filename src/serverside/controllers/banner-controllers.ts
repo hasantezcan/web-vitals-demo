@@ -52,7 +52,7 @@ export async function getTopBanners(
   const response = [
     {
       imageUrl:
-        "https://cdn.dsmcdn.com/sfint/production/sale-banner_1682372605742.png",
+        "https://cdn.dsmcdn.com/sfint/production/marketing-banner_1683209671849.png",
       name: "sale-20",
       type: "top-banner",
     },
