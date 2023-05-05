@@ -44,7 +44,7 @@ async function buildReact(content: string) {
 }
 
 function buildRegularHtml() {
-  const htmlFilePath = path.resolve(process.cwd(), "./Worst-site-ever.html");
+  const htmlFilePath = path.resolve(process.cwd(), "./fid.html");
 
   const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
 
