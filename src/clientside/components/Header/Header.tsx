@@ -11,15 +11,10 @@ const Header = () => {
 
   useEffect(() => {
     getTopBannerData();
-  }, [])
-
+  }, []);
 
   return (
     <div className="page-header">
-      <div className="banner">
-        <MarketingBanner bannerList={topBannerList} />
-        {/* <MarketingBannerWithPlaceholder bannerList={topBannerList} bannerType="header" /> */}
-      </div>
       <div className="header-wrapper">
         <div className="header">
           <img

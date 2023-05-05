@@ -4,103 +4,52 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- <link
-      rel="stylesheet"
-      media="all"
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      onload="this.media='all'; window.document.body.setAttribute('data-font', 'Montserrat');"
-    /> -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon.ico"
+    />
 
-    <!-- to prevent layout shift we can fetch custom fonts as preload -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <!-- <link
-      rel="stylesheet"
-      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://cdn.dsmcdn.com/web/logo/ty-web.svg"
-      type="image/svg+xml"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg"
-      type="image/svg+xml"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg"
-      type="image/svg+xml"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg"
-      type="image/svg+xml"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg"
-      type="image/svg+xml"
-    /> -->
-    <link
-      rel="preload"
-      as="image"
-      href="https://via.placeholder.com/1920x108"
-    />
-    <!-- Google Tag Manager -->
-    <!-- <script> -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-MV48WL7");
-    </script>
-    <!-- End Google Tag Manager -->
+    <!-- **** FONTS **** -->
 
-    <title>Worst site ever</title>
+    <link
+      fetchpriority="low"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&version=5"
+      rel="stylesheet"
+    />
+    <link
+      fetchpriority="low"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&version=5"
+      rel="stylesheet"
+    />
+    <link
+      fetchpriority="low"
+      href="https://fonts.googleapis.com/css2?family=Vina+Sans&version=5"
+      rel="stylesheet"
+    />
+
+    <link
+      fetchpriority="low"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&version=5"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&version=5"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat"
+      rel="stylesheet"
+    />
+
+    <title>web-vitals-demo</title>
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-MV48WL7"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
-
     <div id="root"><!--dom--></div>
 
     <script type="module" src="./main.tsx"></script>
-
-    <!-- create a script block main thread for a 5 sec -->
-    <!-- <script >
-      console.log("start");
-      const start = Date.now();
-      while (Date.now() - start < 15000) {}
-      console.log("end");
-    </script> -->
   </body>
 </html>

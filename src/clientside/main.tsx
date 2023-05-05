@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./style/index.scss";
+import Home from "./Home";
+import Product from "./Product";
 
 const Element = (
   <React.StrictMode>
-    <App {...(window as any).initialData} />
+    {/* <Home {...(window as any).initialData} /> */}
+    <Product {...(window as any).initialData} />
   </React.StrictMode>
 );
 

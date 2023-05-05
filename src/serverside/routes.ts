@@ -6,6 +6,7 @@ import {
 } from "./controllers/product-controllers";
 import { getSearchSuggestion } from "./controllers/search-suggestion-controllers";
 import {
+  getHomePageBanners,
   getListingBanners,
   getTopBanners,
 } from "./controllers/banner-controllers";
@@ -26,6 +27,9 @@ export async function routes(fastify: FastifyInstance) {
   );
   fastify.get("/listing-banners", async (_request, reply) =>
     getListingBanners(_request, reply)
+  );
+  fastify.get("/home-banners", async (_request, reply) =>
+    getHomePageBanners(_request, reply)
   );
   fastify.get("/color-options", async (_request, reply) =>
     getColorOptions(_request, reply)

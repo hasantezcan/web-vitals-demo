@@ -1,24 +1,16 @@
-import { PLACEHOLDER } from "../../../constants";
 import { Product } from "../../interfaces/product";
 interface ImageProps {
-    product: Product;
+  product: Product;
 }
 const Image = ({ product }: ImageProps) => {
+  const worstImage = product.images[0];
+  const optimizedImage = product.images[2];
 
-    if (!product.images[0]) return null;
-
-    return (
-        <div className="pdp-image">
-            <img
-                src={product.images[0]}
-                alt={product.title}
-                onError={(e: any) => {
-                    e.target.src = PLACEHOLDER;
-                }}
-            />
-        </div>
-    )
-
+  return (
+    <div className="pdp-image">
+      <img src={worstImage} alt={product.title} loading="lazy" />
+    </div>
+  );
 };
 
 export { Image };

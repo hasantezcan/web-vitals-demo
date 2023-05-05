@@ -18,13 +18,16 @@ interface ApplicationProps {
   isSsr?: boolean;
 }
 
-export default function App(props: ApplicationProps) {
+export default function Product(props: ApplicationProps) {
   const partyTownEnable = false;
 
   return (
     <SearchSuggestionProvider initialSearchSuggestions={props.suggestions}>
       {partyTownEnable && <PartyTownHead />}
-      <BannerProvider listingBanners={props.listingBanners} topBanners={props.topBanners}>
+      <BannerProvider
+        listingBanners={props.listingBanners}
+        topBanners={props.topBanners}
+      >
         <ProductProvider
           initialProducts={props.products}
           initialColorOptions={props.colorOptions}

@@ -1,8 +1,8 @@
 {
-  "name": "worst-site-ever",
+  "name": "web-vital-demo",
   "version": "1.0.0",
   "private": true,
-  "repository": "git@github.com:hasantezcan/worst-site-ever.git",
+  "repository": "git@github.com:hasantezcan/web-vital-demo.git",
   "author": "Hasan Tezcan <hasan.tezcan@trendyol.com>",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
     "build": "yarn partytown && tsc --project tsconfig.clientside.json && vite build"
   },
   "engines": {
-    "node": "18.12.1"
+    "node": "18.14.2"
   },
   "dependencies": {
     "@builder.io/partytown": "^0.8.0",

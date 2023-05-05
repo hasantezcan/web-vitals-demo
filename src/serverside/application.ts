@@ -6,14 +6,15 @@ import { build } from "vite";
 import viteReactPlugin from "@vitejs/plugin-react";
 import { renderToString } from "react-dom/server";
 import React from "react";
-import App from "../clientside/App";
+import App from "../clientside/Product";
 import serialize from "serialize-javascript";
 import { routes } from "./routes";
 import axios from "axios";
-import { ColorOptions, Product } from "../clientside/interfaces/product";
+import { Product } from "../clientside/interfaces/product";
 import { API_URL } from "../constants";
 import { Banner } from "../clientside/interfaces/banner";
 import { Suggestions } from "../clientside/interfaces/search-suggestions";
+import Home from "../clientside/Home";
 
 function buildClientSide() {
   return build({
@@ -21,6 +22,8 @@ function buildClientSide() {
     base: "/public",
     build: {
       emptyOutDir: true,
+      cssMinify: true,
+      minify: true,
       outDir: path.resolve(process.cwd(), "./public"),
     },
     plugins: [viteReactPlugin()],
@@ -64,60 +67,19 @@ async function buildReact(content: string) {
     });
 
     fastify.register(FastifyStatic, {
+      root: path.resolve(process.cwd(), "./assets"),
+      prefix: "/assets",
+      decorateReply: false,
+    });
+
+    fastify.register(FastifyStatic, {
       root: [path.resolve(process.cwd(), "./public")],
       prefix: "/public",
       decorateReply: false,
     });
 
-    // block response time for 5 sec
-
-    // fastify.addHook("onRequest", async (_request, reply) => {
-    //   await new Promise((resolve) => {
-    //     setTimeout(() => {
-    //       resolve(true);
-    //     }, 5000);
-    //   });
-    // });
-
-    fastify.get("/", async (_request, reply) => {
-      const products = await axios.get<Product[]>(`${API_URL}/products`);
-      const suggestions = await axios.get<Suggestions[]>(
-        `${API_URL}/search-suggestion`
-      );
-      const listingBanners = await axios.get<Banner[]>(
-        `${API_URL}/listing-banners`
-      );
-      //to show user banner remove banner server side request and fetch data in client side
-      const topBanners = await axios.get<Banner[]>(`${API_URL}/top-banners`);
-      const colorOptions = await axios.get<ColorOptions[]>(
-        `${API_URL}/color-options`
-      );
-
-      // fetch data
-      const initialData = {
-        products: products.data,
-        suggestions: suggestions.data,
-        listingBanners: listingBanners.data,
-        topBanners: topBanners.data,
-        colorOptions: colorOptions.data,
-        isSsr: true,
-      };
-      const decodedProps = serialize(initialData, { isJSON: true });
-      const script = `<script>window["initialData"]=${decodedProps}</script>`;
-
-      // https://gitlab.trendyol.com/discovery/mobile-web/packages/gateway-renderer/-/blob/master/src/index.ts#L12
-      const reactComponent = renderToString(
-        React.createElement(App, initialData, null)
-      );
-      const html = await buildReact(`${script} ${reactComponent}`);
-
-      reply
-        .code(200)
-        .header("Content-Type", "text/html")
-        .send(Buffer.from(html, "utf-8"));
-    });
-
-    fastify.get("/clientside", async (_request, reply) => {
+    // *** pdp CSR
+    fastify.get("/pdp", async (_request, reply) => {
       const html = await buildReact("");
 
       reply
@@ -125,6 +87,43 @@ async function buildReact(content: string) {
         .header("Content-Type", "text/html")
         .send(Buffer.from(html, "utf-8"));
     });
+
+    // homepage CSR
+    // fastify.get("/homepage", async (_request, reply) => {
+    //   const html = await buildReact("");
+
+    //   reply
+    //     .code(200)
+    //     .header("Content-Type", "text/html")
+    //     .send(Buffer.from(html, "utf-8"));
+    // });
+
+    // homepage SSR
+    // fastify.get("/homepage", async (_request, reply) => {
+    //   const listingBanners = await axios.get<Banner[]>(
+    //     `${API_URL}/home-banners`
+    //   );
+
+    //   // fetch data
+    //   const initialData = {
+    //     listingBanners: listingBanners.data,
+    //     isSsr: true,
+    //   };
+    //   const decodedProps = serialize(initialData, { isJSON: true });
+    //   const script = `<script>window["initialData"]=${decodedProps}</script>`;
+
+    //   const reactComponent = renderToString(
+    //     React.createElement(Home, initialData, null)
+    //   );
+    //   const html = await buildReact(`${script} ${reactComponent}`);
+
+    //   // Question: Send placeholder html to client and then send the real html after 5 sec
+
+    //   reply
+    //     .code(200)
+    //     .header("Content-Type", "text/html")
+    //     .send(Buffer.from(html, "utf-8"));
+    // });
 
     fastify.register(routes, { prefix: "/api" });
 

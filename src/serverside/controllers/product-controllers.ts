@@ -34,10 +34,9 @@ export async function getProducts(
         "Description Gray sneaker, structured Flat heel Small heel height, between 1-4 cm Upper: 100% Synthetic;Inner Material: 100% Textile;Outsole: 100% Rubber Care Instructions See care label for detailed care instructions. Additional Info Dispatched and sold by Shoes24. From this product can A maximum of 10 pieces can be ordered. Trendyol reserves the right to cancel orders over 10 pieces cancel.",
       category: "Shoes",
       images: [
-        // "MUCO",
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-        "https://cdn.dsmcdn.com/ty629/product/media/images/20221208/1/230142809/642030272/1/1_org_zoom.jpg",
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=10000&q=80",
+        `https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=5000&q=80&abbas=${Date.now()}`,
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2000&q=80",
       ],
     },
     {
@@ -228,11 +227,11 @@ export async function getColorOptions(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
-  await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 3000);
-  });
+  // await new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     resolve(true);
+  //   }, 3000);
+  // });
   const response = [
     {
       color: "black",
