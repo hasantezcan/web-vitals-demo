@@ -1,5 +1,5 @@
-console.log("SCRIPT START");
-document.getElementById("fid").addEventListener("click", () => {
+console.log("MT-BLOCKER-1 SCRIPT START");
+document.getElementById("fid-search").addEventListener("click", () => {
   console.log("EVENT LISTINER IS WORKING..");
 });
 function sleep(milliseconds) {
@@ -10,4 +10,4 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 sleep(5000);
-console.log("SCRIPT END");
+console.log("MT-BLOCKER-1 SCRIPT START");

@@ -11,6 +11,12 @@
         for (const entry of entryList.getEntries()) {
           const delay = entry.processingStart - entry.startTime;
           console.log("FID:", delay, { entry });
+          if (delay > 100) {
+            const img = document.getElementById("gibi-yilmaz-target");
+            img.src = "https://i.ytimg.com/vi/mIJzGPtH12o/mqdefault.jpg";
+            const userName = document.getElementById("user-name");
+            userName.innerHTML = "Sivil Yılmaz &#128548;"
+          }
         }
       });
       fidObserver.observe({ type: "first-input", buffered: true });
@@ -18,10 +24,13 @@
       // LONG TASK & RESOURCE
       // const obs = new PerformanceObserver((list) => {
       //   for (const entry of list.getEntries()) {
-      //     console.log(entry.entryType, entry.toJSON());
+      //     if (
+      //       entry.name === "http://localhost:3000/dummy-scripts/mt-blocker.js"
+      //     ) {
+      //       console.log("script fetch duration", entry.duration);
+      //     }
       //   }
       // });
-      // obs.observe({ type: "longtask", buffered: true });
       // obs.observe({ type: "resource", buffered: true });
       // obs.observe({ type: "paint", buffered: true });
       // obs.observe({ type: "measure", buffered: true });
@@ -102,74 +111,83 @@
         pointer-events: none;
       }
     </style>
+    <!-- <script
+      type="text/javascript"
+      src="https://cdn.dsmcdn.com/mweb/master/boutique-list.bundle.4aaacff8b91c4cff3b5b59fb9b0ddd0a.js"
+      crossorigin="anonymous"
+    ></script> -->
   </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
+    <script>
+      console.log("PARSING BODY START");
+    </script>
 
-    <!-- End Google Tag Manager (noscript) -->
-    <button id="fid" style="height: 200px; width: 300px">
-      WORST BUTTON EVER
-    </button>
-
-    <script async src="./dummy-scripts/mt-blocker.js"></script>
-
-    <div id="root">
-      <div class="page-header">
-        <div class="marketing-banner">
+    <!-- header -->
+    <div class="page-header">
+      <div class="marketing-banner">
+        <img
+          src="https://cdn.dsmcdn.com/sfint/production/marketing-banner_1683209671849.png"
+          alt="sale-20"
+          height="200"
+        />
+      </div>
+      <div class="header-wrapper">
+        <div class="header">
           <img
-            src="https://cdn.dsmcdn.com/sfint/production/sale-banner_1682372605742.png"
-            alt="sale-20"
+            class="ty-logo"
+            src="https://cdn.dsmcdn.com/web/logo/ty-web.svg"
+            alt=""
           />
-        </div>
-        <div class="header-wrapper">
-          <div class="header">
-            <img
-              class="ty-logo"
-              src="https://cdn.dsmcdn.com/web/logo/ty-web.svg"
-              alt=""
+          <div class="search-bar">
+            <input
+              id="fid-search"
+              type="text"
+              placeholder="Type the product, category or brand you are looking"
             />
-            <div class="search-bar">
-              <input
-                id="fid-search"
-                type="text"
-                placeholder="Type the product, category or brand you are looking"
-              /><span
-                ><img
-                  class="search-icon"
-                  src="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg"
-              /></span>
+            <span
+              ><img
+                class="search-icon"
+                src="https://cdn.dsmcdn.com/sfint/production/search_1682335823564.svg"
+            /></span>
+          </div>
+          <div class="navigations">
+            <div class="navigation-item login">
+              <img
+                src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg"
+                alt=""
+              /><span>Account</span>
             </div>
-            <div class="navigations">
-              <div class="navigation-item login">
-                <img
-                  src="https://cdn.dsmcdn.com/sfint/production/icons/user_1664873317937.svg"
-                  alt=""
-                /><span>Account</span>
-              </div>
-              <div class="navigation-item fav">
-                <img
-                  src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg"
-                  alt=""
-                /><span>Favorites</span>
-              </div>
-              <div class="navigation-item cart">
-                <img
-                  src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg"
-                  alt=""
-                /><span>Cart</span>
-              </div>
-              <div class="navigation-item profile">
-                <a href="https://www.subaymuco.com/" target="_blank"
-                  ><img
-                    src="https://www.subaymuco.com/_next/image?url=%2Fmuco-images%2Fsubay-muco.jpg&amp;w=750&amp;q=75"
-                    alt="subay-muco"
-                  /><span>Subay Muco</span></a
-                >
-              </div>
+            <div class="navigation-item fav">
+              <img
+                src="https://cdn.dsmcdn.com/sfint/production/icons/heart_1664873982562.svg"
+                alt=""
+              /><span>Favorites</span>
+            </div>
+            <div class="navigation-item cart">
+              <img
+                src="https://cdn.dsmcdn.com/sfint/production/icons/cart-icon_1676639437773.svg"
+                alt=""
+              /><span>Cart</span>
+            </div>
+            <div class="navigation-item profile">
+              <a href="https://www.subaymuco.com/" target="_blank"
+                ><img
+                  id="gibi-yilmaz-target"
+                  src="https://www.subaymuco.com/_next/image?url=%2Fmuco-images%2Fsubay-muco.jpg&amp;w=750&amp;q=75"
+                  alt="subay-muco"
+                /><span id="user-name">Subay Muco</span></a
+              >
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <!-- header-end -->
+
+    <script src="./dummy-scripts/mt-blocker.js"></script>
+
+    <!-- root-start -->
+    <div id="root">
       <div class="pdp-wrapper">
         <div class="pdp">
           <p class="breadcrumb">Shoes &gt; Sports Shoes &gt; Sneakers</p>
@@ -423,5 +441,9 @@
         </div>
       </div>
     </div>
+    <!-- root-end -->
+    <script>
+      console.log("PARSING BODY END");
+    </script>
   </body>
 </html>

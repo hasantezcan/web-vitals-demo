@@ -48,9 +48,9 @@ function buildRegularHtml() {
 
   const htmlFileBuffer = fs.readFileSync(htmlFilePath, { encoding: "utf-8" });
 
-  const htmlFile = htmlFileBuffer.toString();
+  // const htmlFile = htmlFileBuffer.toString();
 
-  return htmlFile;
+  return htmlFileBuffer;
 }
 
 (async () => {
@@ -129,7 +129,7 @@ function buildRegularHtml() {
       reply
         .code(200)
         .header("Content-Type", "text/html")
-        .send(Buffer.from(html, "utf-8"));
+        .send(html);
     });
 
     
