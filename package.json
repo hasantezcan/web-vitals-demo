@@ -1,8 +1,8 @@
 {
-  "name": "worst-site-ever",
+  "name": "web-vitals-demo",
   "version": "1.0.0",
   "private": true,
-  "repository": "git@github.com:hasantezcan/worst-site-ever.git",
+  "repository": "git@github.com:hasantezcan/web-vitals-demo.git",
   "author": "Hasan Tezcan <hasan.tezcan@trendyol.com>",
   "license": "MIT",
   "scripts": {

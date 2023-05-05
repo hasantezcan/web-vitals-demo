@@ -1,4 +1,4 @@
-console.log("MT-BLOCKER-1 SCRIPT START");
+console.log("MAIN THREAD BLOCKER SCRIPT START");
 document.getElementById("fid-search").addEventListener("click", () => {
   console.log("EVENT LISTINER IS WORKING..");
 });
@@ -10,4 +10,4 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 sleep(5000);
-console.log("MT-BLOCKER-1 SCRIPT START");
+console.log("MAIN THREAD BLOCKER SCRIPT END");

@@ -7,7 +7,7 @@
 
     <script type="module">
       // FID
-      const fidObserver = new PerformanceObserver((entryList) => {
+      const po = new PerformanceObserver((entryList) => {
         for (const entry of entryList.getEntries()) {
           const delay = entry.processingStart - entry.startTime;
           console.log("FID:", delay, { entry });
@@ -15,11 +15,11 @@
             const img = document.getElementById("gibi-yilmaz-target");
             img.src = "https://i.ytimg.com/vi/mIJzGPtH12o/mqdefault.jpg";
             const userName = document.getElementById("user-name");
-            userName.innerHTML = "Sivil Yılmaz &#128548;";
+            userName.innerHTML = "&#128548; Yılmaz";
           }
         }
       });
-      fidObserver.observe({ type: "first-input", buffered: true });
+      po.observe({ type: "first-input", buffered: true });
 
       // LONG TASK & RESOURCE
       // const obs = new PerformanceObserver((list) => {
@@ -46,7 +46,7 @@
     <!-- <script> -->
     <!-- End Google Tag Manager -->
 
-    <title>Worst site ever</title>
+    <title>Web Vitals Demo</title>
     <link rel="stylesheet" href="/public/assets/index-239f68e1.css" />
     <style type="text/css">
       .styles-module_carousel-base__3keqD {
@@ -127,6 +127,7 @@
       <div class="marketing-banner">
         <img
           src="https://cdn.dsmcdn.com/sfint/production/marketing-banner_1683209671849.png"
+          style="width: 100%"
           alt="sale-20"
           height="200"
         />

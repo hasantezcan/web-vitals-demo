@@ -14,7 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/hasan.tezcan/Workspace/crafthouse/worst-site-ever/package.json: Unexpected token v in JSON at position 1
+  SyntaxError: /Users/hasan.tezcan/Workspace/crafthouse/web-vitals-demo/package.json: Unexpected token v in JSON at position 1
       at JSON.parse (<anonymous>)
       at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1629:59
       at Generator.next (<anonymous>)
@@ -23,10 +23,10 @@ Trace:
 
 npm manifest: 
   vite{
-    "name": "worst-site-ever",
+    "name": "web-vitals-demo",
     "version": "1.0.0",
     "main": "index.js",
-    "repository": "git@github.com:hasantezcan/worst-site-ever.git",
+    "repository": "git@github.com:hasantezcan/web-vitals-demo.git",
     "author": "Sfint-Crowdin Bot <gitlab-bot@trendyol.com>",
     "license": "MIT"
   }
