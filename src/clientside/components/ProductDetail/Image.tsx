@@ -8,7 +8,7 @@ const Image = ({ product }: ImageProps) => {
 
   return (
     <div className="pdp-image">
-      <img src={worstImage} alt={product.title} loading="lazy" />
+      <img src={worstImage} alt={product.title}  />
     </div>
   );
 };

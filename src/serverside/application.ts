@@ -22,8 +22,8 @@ function buildClientSide() {
     base: "/public",
     build: {
       emptyOutDir: true,
-      cssMinify: true,
-      minify: true,
+      cssMinify: false,
+      minify: false,
       outDir: path.resolve(process.cwd(), "./public"),
     },
     plugins: [viteReactPlugin()],
@@ -88,6 +88,7 @@ async function buildReact(content: string) {
         .send(Buffer.from(html, "utf-8"));
     });
 
+    // *** homepage
     // homepage CSR
     // fastify.get("/homepage", async (_request, reply) => {
     //   const html = await buildReact("");
@@ -116,8 +117,6 @@ async function buildReact(content: string) {
     //     React.createElement(Home, initialData, null)
     //   );
     //   const html = await buildReact(`${script} ${reactComponent}`);
-
-    //   // Question: Send placeholder html to client and then send the real html after 5 sec
 
     //   reply
     //     .code(200)
