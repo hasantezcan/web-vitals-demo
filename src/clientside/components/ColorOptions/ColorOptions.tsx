@@ -1,4 +1,3 @@
-import { useBanner } from "../../context/banner-context";
 import { useProduct } from "../../context/product-context";
 
 const ColorOptions = () => {

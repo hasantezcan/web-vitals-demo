@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  //Verdana is best option for montserrat custom font
+  //two approach: FOUT and FOUT
+
+  font-family: "Montserrat", sans-serif;
+}
+// body:not([data-font*="Montserrat"]) {
+//   /* Font setting of sans-serif with inter for minimal FOUC Used https://meowni.ca/font-style-matcher/ */
+//   font-family: Verdana, sans-serif;
+//   font-size: 16px;
+//   line-height: 1.5rem;
+//   visibility: visible;
+//   letter-spacing: 0.45px;
+//   word-spacing: 0.3px;
+//   color: red;
+// }
+
+// body[data-font*="Montserrat"] {
+//   font-family: "Montserrat", sans-serif;
+//   font-size: 16px;
+//   line-height: 1.5rem;
+//   visibility: visible;
+//   letter-spacing: 0;
+//   word-spacing: 0;
+//   color: blue;
+// }
+
+@import "./Header/header.scss";
+@import "./ProductDetail/product-detail.scss";
+@import "./ProductRecommendations/product-recommendations.scss";
+@import "./ProductRecommendations/discover-more.scss";

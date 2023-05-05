@@ -104,7 +104,11 @@ function buildRegularHtml() {
       const suggestions = await axios.get<Suggestions[]>(
         `${API_URL}/search-suggestion`
       );
-      const banners = await axios.get<Banner[]>(`${API_URL}/banners`);
+      const listingBanners = await axios.get<Banner[]>(
+        `${API_URL}/listing-banners`
+      );
+      //to show user banner remove banner server side request and fetch data in client side
+      const topBanners = await axios.get<Banner[]>(`${API_URL}/top-banners`);
       const colorOptions = await axios.get<ColorOptions[]>(
         `${API_URL}/color-options`
       );
@@ -113,8 +117,10 @@ function buildRegularHtml() {
       const initialData = {
         products: products.data,
         suggestions: suggestions.data,
-        banners: banners.data,
+        listingBanners: listingBanners.data,
+        topBanners: topBanners.data,
         colorOptions: colorOptions.data,
+        isSsr: true,
       };
       const decodedProps = serialize(initialData, { isJSON: true });
       const script = `<script>window["initialData"]=${decodedProps}</script>`;

@@ -1,19 +1,19 @@
-import { useBanner } from "../../context/banner-context";
-import { BannerType } from "../../interfaces/banner";
+import { Banner } from "../../interfaces/banner";
 
 interface MarketingBannerProps {
-  bannerType: BannerType
+  bannerList: Banner[];
+  bannerType?: string;
 }
-const MarketingBanner = ({ bannerType }: MarketingBannerProps) => {
-  const { bannerList } = useBanner();
+const MarketingBanner = ({ bannerList }: MarketingBannerProps) => {
 
-  if (!bannerList?.length) return null;
+  if (!bannerList?.length && !bannerList[0]?.imageUrl) return null;
 
-  const banner = bannerList.find(({ type }) => type === bannerType);
 
   return (
     <div className="marketing-banner">
-      <img src={banner?.imageUrl} alt={banner?.name} />
+      <a href="https://www.subaymuco.com/">
+        <img src={bannerList[0]?.imageUrl} alt={bannerList[0]?.name} />
+      </a>
     </div>
   )
 };

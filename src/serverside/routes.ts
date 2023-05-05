@@ -7,7 +7,10 @@ import {
 import { saveBrowserData } from "./controllers/browser";
 import { saveUserData } from "./controllers/user";
 import { getSearchSuggestion } from "./controllers/search-suggestion-controllers";
-import { getBanners } from "./controllers/banner-controllers";
+import {
+  getListingBanners,
+  getTopBanners,
+} from "./controllers/banner-controllers";
 import { sendEvent } from "./controllers/event-controllers";
 
 export async function routes(fastify: FastifyInstance) {
@@ -20,8 +23,11 @@ export async function routes(fastify: FastifyInstance) {
   fastify.get("/search-suggestion", async (_request, reply) =>
     getSearchSuggestion(_request, reply)
   );
-  fastify.get("/banners", async (_request, reply) =>
-    getBanners(_request, reply)
+  fastify.get("/top-banners", async (_request, reply) =>
+    getTopBanners(_request, reply)
+  );
+  fastify.get("/listing-banners", async (_request, reply) =>
+    getListingBanners(_request, reply)
   );
   fastify.get("/color-options", async (_request, reply) =>
     getColorOptions(_request, reply)
