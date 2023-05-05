@@ -1,4 +1,4 @@
-# web-vital-demo
+# web-vitals-demo
 
 This is the demo project for improve web vital metrics. It's a simple site with a lot of bad practices.
 
