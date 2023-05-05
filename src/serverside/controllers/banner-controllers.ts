@@ -8,7 +8,7 @@ export async function getListingBanners(
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 2000);
+    }, 1000);
   });
 
   const response = [
@@ -46,7 +46,7 @@ export async function getTopBanners(
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 3000);
+    }, 2000);
   });
 
   const response = [

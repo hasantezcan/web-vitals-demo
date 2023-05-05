@@ -20,6 +20,14 @@
         grid-gap: 20px;
         margin-top: 15px;
         grid-auto-rows: auto;
+        .listing-banner {
+          // height: 185px;
+          // width: 100%;
+
+          img {
+            width: 100%;
+          }
+        }
 
         .product-card-wrapper {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

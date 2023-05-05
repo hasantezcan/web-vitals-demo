@@ -19,8 +19,17 @@ interface ApplicationProps {
 }
 
 export default function App(props: ApplicationProps) {
+
   const partyTownEnable = false;
 
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      console.log('This page was restored from the bfcache.');
+    } else {
+      console.log('This page was loaded normally.');
+    }
+  });
+  
   return (
     <SearchSuggestionProvider initialSearchSuggestions={props.suggestions}>
       {partyTownEnable && <PartyTownHead />}

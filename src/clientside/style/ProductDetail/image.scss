@@ -1,7 +1,15 @@
 .pdp-image {
+  // we can allocate space for the image while giving width and height as pixels to minimize re-layout
   img {
-    //width: 750px;
-    height: 100%;
     object-fit: cover;
+    height: 100%; //after responsive web design we can use css to resize, allocated for an image once it began to download and the browser could determine its dimensions
+    width: auto;
+
+    // width: 750px;
+    // height: 500px;
+
+    // the aspect ratio of an image is the ratio of its width to its height.
+    // height: 100%;
+    // aspect-ratio: auto 3 / 2;
   }
 }

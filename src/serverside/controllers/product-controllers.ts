@@ -231,7 +231,7 @@ export async function getColorOptions(
   await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 3000);
+    }, 500);
   });
   const response = [
     {
